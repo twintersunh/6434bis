@@ -171,7 +171,7 @@ the changes is agreed.
     <xref target='DODv6' /> and <xref target='USGv6' />).</t>
 
 	<t>
-**BIS Are the USGv6 and DODv6 references still appopriate? **
+**BIS Is the DODv6 references still appopriate? **
 	</t>
 
     <t>As it is not always possible for an implementer to know the
@@ -492,6 +492,9 @@ The details of how one uses ND on
     RFC 4191  to advertise routes to certain local
     destinations. Consequently, nodes that will be deployed in SOHO
     environments SHOULD implement RFC 4191.</t>
+    <t>
+    ** BIS Need to update 6204 to 7084. **
+    </t>
 
     </section>
 
@@ -621,6 +624,10 @@ The details of how one uses ND on
 But no need for /127 p2p text RFC 6164. 
 And no need for note on IID significance, as per RFC 7136. **
 	</t>
+
+        <t>
+**BIS Add note discussing the impact of having multiple Addeses**
+        </t>
 
     </section>
 
@@ -882,6 +889,10 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 **BIS Scrub A6 completely now? **
 	</t>
 
+       <t>
+**BIS Add DNS-SD? **
+       </t>
+
     </section>
 
     <section title="Dynamic Host Configuration Protocol for IPv6 (DHCPv6) - RFC 3315">
@@ -966,6 +977,11 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
       IPv6 Address Text Representation" <xref target='RFC5952' />.</t>
       
     </section>
+    <section title="Happy Eyeballs">
+      <t>
+      **BIS Add Happy Eyeballs RFC6555 **
+      </t>
+    </section>
 
     <section title="Application Programming Interfaces (APIs)">
       <t>There are a number of IPv6-related APIs. This document does
@@ -1041,6 +1057,10 @@ Interface (POSIX) <xref target='POSIX' />.</t>
 **BIS Mobile IPv6 for hosts seems in scant usage; no OSes support it?  Do we say it's effectively dead, and point at mobile network work instead? **
 	</t>
 
+       <t>
+**BIS need to add 3G /64 RFC 7278**
+       </t>
+
   </section>
 
   <section title="Security" anchor="sec">
@@ -1065,7 +1085,7 @@ Interface (POSIX) <xref target='POSIX' />.</t>
    
     <t> Although IPsec can be used with manual keying in some cases,
        such usage has limited applicability and is not recommended.
-       </t>
+    </t>
 
    
     <t> A range of security technologies and approaches proliferate
@@ -1122,6 +1142,8 @@ Note that
 	frequently than security protocols. Therefore, implementations
 	MUST allow for migration to new algorithms, as RFC 4835 is
 	replaced or updated in the future.</t>
+     <t>**BIS update to 7321 or 7321bis**
+     </t>
 
      <t> The current set of mandatory-to-implement algorithms for
 	IKEv2 are defined in "Cryptographic Algorithms for Use in the
@@ -1129,7 +1151,8 @@ Note that
 	<xref target='RFC4307' />.  IPv6 nodes implementing IKEv2 MUST
 	conform to the requirements in <xref target='RFC4307'/> and/or any future
 	updates or replacements to <xref target='RFC4307'/>.
-      
+    </t>
+    <t>**BIS update to 4307bis**
     </t>
 
     </section>      
@@ -1214,8 +1237,11 @@ Note that
     be the only possible way of controlling these nodes.</t>
 
 	<t>
-**BIS This is a little thin. Add more? **
+**BIS This is a little thin. Add Netconf, restconf, yang models? **
 	</t>
+    <t>
+    **BIS add the network polling/syslod nd for none DHCPv6 network tracking.**
+    </t>
 
     <section title="Management Information Base (MIB) Modules">
 
@@ -1247,6 +1273,12 @@ efficiency here in a new section?
 Talk about resource management in nodes.
 Low power operation.
 	</t>
+  </section>
+
+  <section title="IPv6 Switch behavior">
+  <t>
+**BIS Add RA Guard and Snooping for features that IPv6 Switch might implement?
+  </t>
   </section>
 
   <section title="Security Considerations">

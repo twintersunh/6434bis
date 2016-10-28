@@ -6,9 +6,9 @@ Internet Engineering Task Force                                 T. Chown
 Internet-Draft                                                      Jisc
 Obsoletes: 6434 (if approved)                                J. Loughney
 Intended status: Informational                                     Nokia
-Expires: April 30, 2017                                       T. Winters
+Expires: May 1, 2017                                          T. Winters
                                              University of New Hampshire
-                                                        October 27, 2016
+                                                        October 28, 2016
 
 
                          IPv6 Node Requirements
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 1]
+Chown, et al.              Expires May 1, 2017                  [Page 1]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -63,7 +63,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 30, 2017.
+   This Internet-Draft will expire on May 1, 2017.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 2]
+Chown, et al.              Expires May 1, 2017                  [Page 2]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -133,12 +133,13 @@ Internet-Draft           IPv6 Node Requirements             October 2016
                Routers - RFC 4213  . . . . . . . . . . . . . . . . .  17
    9.  Application Support . . . . . . . . . . . . . . . . . . . . .  17
      9.1.  Textual Representation of IPv6 Addresses - RFC     5952 .  17
-     9.2.  Application Programming Interfaces (APIs) . . . . . . . .  18
+     9.2.  Happy Eyeballs  . . . . . . . . . . . . . . . . . . . . .  18
+     9.3.  Application Programming Interfaces (APIs) . . . . . . . .  18
    10. Mobility  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
    11. Security  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
      11.1.  Requirements . . . . . . . . . . . . . . . . . . . . . .  20
      11.2.  Transforms and Algorithms  . . . . . . . . . . . . . . .  20
-   12. Router-Specific Functionality . . . . . . . . . . . . . . . .  20
+   12. Router-Specific Functionality . . . . . . . . . . . . . . . .  21
      12.1.  IPv6 Router Alert Option - RFC 2711  . . . . . . . . . .  21
      12.2.  Neighbor Discovery for IPv6 - RFC 4861 . . . . . . . . .  21
      12.3.  Stateful Address Autoconfiguration (DHCPv6) - RFC 3315 .  21
@@ -148,24 +149,23 @@ Internet-Draft           IPv6 Node Requirements             October 2016
        13.1.2.  Management Information Base for the Internet
                 Protocol (IP)  . . . . . . . . . . . . . . . . . . .  22
    14. Constrained Devices . . . . . . . . . . . . . . . . . . . . .  22
-   15. Security Considerations . . . . . . . . . . . . . . . . . . .  22
-   16. Authors and Acknowledgments . . . . . . . . . . . . . . . . .  22
-     16.1.  Authors and Acknowledgments (Current Document) . . . . .  22
-     16.2.  Authors and Acknowledgments from RFC 6434  . . . . . . .  23
-     16.3.  Authors and Acknowledgments from RFC 4294  . . . . . . .  23
-   17. Appendix: Changes from RFC 4294 . . . . . . . . . . . . . . .  25
-   18. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
-     18.1.  Normative References . . . . . . . . . . . . . . . . . .  26
-     18.2.  Informative References . . . . . . . . . . . . . . . . .  30
+   15. IPv6 Switch behavior  . . . . . . . . . . . . . . . . . . . .  22
+   16. Security Considerations . . . . . . . . . . . . . . . . . . .  23
+   17. Authors and Acknowledgments . . . . . . . . . . . . . . . . .  23
+     17.1.  Authors and Acknowledgments (Current Document) . . . . .  23
+     17.2.  Authors and Acknowledgments from RFC 6434  . . . . . . .  23
+     17.3.  Authors and Acknowledgments from RFC 4294  . . . . . . .  23
+   18. Appendix: Changes from RFC 4294 . . . . . . . . . . . . . . .  25
+   19. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     19.1.  Normative References . . . . . . . . . . . . . . . . . .  26
+     19.2.  Informative References . . . . . . . . . . . . . . . . .  30
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 
 
 
 
-
-
-Chown, et al.            Expires April 30, 2017                 [Page 3]
+Chown, et al.              Expires May 1, 2017                  [Page 3]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -207,7 +207,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    specialized requirements for IPv6 in target environments (see [DODv6]
    and [USGv6]).
 
-   **BIS Are the USGv6 and DODv6 references still appopriate? **
+   **BIS Is the DODv6 references still appopriate? **
 
    As it is not always possible for an implementer to know the exact
    usage of IPv6 in a node, an overriding requirement for IPv6 nodes is
@@ -221,7 +221,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 4]
+Chown, et al.              Expires May 1, 2017                  [Page 4]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 5]
+Chown, et al.              Expires May 1, 2017                  [Page 5]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 6]
+Chown, et al.              Expires May 1, 2017                  [Page 6]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -389,7 +389,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 7]
+Chown, et al.              Expires May 1, 2017                  [Page 7]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -445,7 +445,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 8]
+Chown, et al.              Expires May 1, 2017                  [Page 8]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -501,7 +501,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                 [Page 9]
+Chown, et al.              Expires May 1, 2017                  [Page 9]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -520,6 +520,8 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    adhering to [RFC6204] use RFC 4191 to advertise routes to certain
    local destinations.  Consequently, nodes that will be deployed in
    SOHO environments SHOULD implement RFC 4191.
+
+   ** BIS Need to update 6204 to 7084. **
 
 5.4.  SEcure Neighbor Discovery (SEND) - RFC 3971
 
@@ -551,16 +553,17 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    there is no requirement to implement the option today.  However,
    implementations that are able to pass unrecognized options to a
    higher-level entity that may be able to understand them (e.g., a
-   user-level process using a "raw socket" facility) MAY take steps to
-   handle the option in anticipation of a future usage.
 
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 10]
+Chown, et al.              Expires May 1, 2017                 [Page 10]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
+
+   user-level process using a "raw socket" facility) MAY take steps to
+   handle the option in anticipation of a future usage.
 
 5.6.  Path MTU Discovery and Packet Size
 
@@ -610,10 +613,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 11]
+Chown, et al.              Expires May 1, 2017                 [Page 11]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -629,6 +629,8 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    **BIS Add note on Why /64?  RFC 7421.  But no need for /127 p2p text
    RFC 6164.  And no need for note on IID significance, as per RFC 7136.
    **
+
+   **BIS Add note discussing the impact of having multiple Addeses**
 
 5.9.2.  IPv6 Stateless Address Autoconfiguration - RFC 4862
 
@@ -664,16 +666,16 @@ Internet-Draft           IPv6 Node Requirements             October 2016
       DHCPv6, or manual configuration, with the following [exceptions
       noted therein].
 
-   "Optimistic Duplicate Address Detection (DAD) for IPv6" [RFC4429]
-   specifies a mechanism to reduce delays associated with generating
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 12]
+Chown, et al.              Expires May 1, 2017                 [Page 12]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
 
+   "Optimistic Duplicate Address Detection (DAD) for IPv6" [RFC4429]
+   specifies a mechanism to reduce delays associated with generating
    addresses via Stateless Address Autoconfiguration [RFC4862].  RFC
    4429 was developed in conjunction with Mobile IPv6 in order to reduce
    the time needed to acquire and configure addresses as devices quickly
@@ -723,9 +725,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-
-
-Chown, et al.            Expires April 30, 2017                [Page 13]
+Chown, et al.              Expires May 1, 2017                 [Page 13]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -781,7 +781,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 14]
+Chown, et al.              Expires May 1, 2017                 [Page 14]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -837,7 +837,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 15]
+Chown, et al.              Expires May 1, 2017                 [Page 15]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -872,6 +872,8 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
    **BIS Scrub A6 completely now? **
 
+   **BIS Add DNS-SD? **
+
 7.2.  Dynamic Host Configuration Protocol for IPv6 (DHCPv6) - RFC 3315
 
 7.2.1.  Other Configuration Information
@@ -891,9 +893,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-
-
-Chown, et al.            Expires April 30, 2017                [Page 16]
+Chown, et al.              Expires May 1, 2017                 [Page 16]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -949,12 +949,16 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 17]
+Chown, et al.              Expires May 1, 2017                 [Page 17]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
 
-9.2.  Application Programming Interfaces (APIs)
+9.2.  Happy Eyeballs
+
+   **BIS Add Happy Eyeballs RFC6555 **
+
+9.3.  Application Programming Interfaces (APIs)
 
    There are a number of IPv6-related APIs.  This document does not
    mandate the use of any, because the choice of API does not directly
@@ -999,16 +1003,14 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
       - home agents
 
-      - all IPv6 routers
 
 
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 18]
+Chown, et al.              Expires May 1, 2017                 [Page 18]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
+
+      - all IPv6 routers
 
    At the present time, Mobile IP has seen only limited implementation
    and no significant deployment, partly because it originally assumed
@@ -1025,6 +1027,8 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    **BIS Mobile IPv6 for hosts seems in scant usage; no OSes support it?
    Do we say it's effectively dead, and point at mobile network work
    instead? **
+
+   **BIS need to add 3G /64 RFC 7278**
 
 11.  Security
 
@@ -1054,18 +1058,18 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    security technology in all cases and is unlikely to displace the
    others.
 
-   Previously, IPv6 mandated implementation of IPsec and recommended the
-   key management approach of IKE.  This document updates that
-   recommendation by making support of the IPsec Architecture [RFC4301]
-   a SHOULD for all IPv6 nodes.  Note that the IPsec Architecture
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 19]
+Chown, et al.              Expires May 1, 2017                 [Page 19]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
 
+   Previously, IPv6 mandated implementation of IPsec and recommended the
+   key management approach of IKE.  This document updates that
+   recommendation by making support of the IPsec Architecture [RFC4301]
+   a SHOULD for all IPv6 nodes.  Note that the IPsec Architecture
    requires (e.g., Section 4.5 of RFC 4301) the implementation of both
    manual and automatic key management.  Currently, the default
    automated key management protocol to implement is IKEv2 [RFC5996].
@@ -1103,24 +1107,28 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    migration to new algorithms, as RFC 4835 is replaced or updated in
    the future.
 
+   **BIS update to 7321 or 7321bis**
+
    The current set of mandatory-to-implement algorithms for IKEv2 are
    defined in "Cryptographic Algorithms for Use in the Internet Key
    Exchange Version 2 (IKEv2)" [RFC4307].  IPv6 nodes implementing IKEv2
    MUST conform to the requirements in [RFC4307] and/or any future
    updates or replacements to [RFC4307].
 
+
+
+Chown, et al.              Expires May 1, 2017                 [Page 20]
+
+Internet-Draft           IPv6 Node Requirements             October 2016
+
+
+   **BIS update to 4307bis**
+
 12.  Router-Specific Functionality
 
    This section defines general host considerations for IPv6 nodes that
    act as routers.  Currently, this section does not discuss routing-
    specific requirements.
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 20]
-
-Internet-Draft           IPv6 Node Requirements             October 2016
-
 
    **BIS Sync here with work by John Brzozowski et al. in draft-ali-
    ipv6rtr-reqs-00**
@@ -1162,6 +1170,14 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    In more complex deployment scenarios, such as within enterprise or
    service provider networks, the use of DHCP requires some level of
    configuration, in order to configure relay agents, DHCP servers, etc.
+
+
+
+Chown, et al.              Expires May 1, 2017                 [Page 21]
+
+Internet-Draft           IPv6 Node Requirements             October 2016
+
+
    In such environments, the DHCP server might even be run on a
    traditional server, rather than as part of a router.
 
@@ -1170,14 +1186,6 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    targeted for deployment within more complex scenarios (as described
    above) SHOULD support relay agent functionality.  Note that "Basic
    Requirements for IPv6 Customer Edge Routers" [RFC6204] requires
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 21]
-
-Internet-Draft           IPv6 Node Requirements             October 2016
-
-
    implementation of a DHCPv6 server function in IPv6 Customer Edge (CE)
    routers.
 
@@ -1187,7 +1195,10 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    nodes that are embedded devices, network management may be the only
    possible way of controlling these nodes.
 
-   **BIS This is a little thin.  Add more? **
+   **BIS This is a little thin.  Add Netconf, restconf, yang models? **
+
+   **BIS add the network polling/syslod nd for none DHCPv6 network
+   tracking.**
 
 13.1.  Management Information Base (MIB) Modules
 
@@ -1210,7 +1221,20 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    efficiency here in a new section?  Talk about resource management in
    nodes.  Low power operation.
 
-15.  Security Considerations
+15.  IPv6 Switch behavior
+
+   **BIS Add RA Guard and Snooping for features that IPv6 Switch might
+   implement?
+
+
+
+
+Chown, et al.              Expires May 1, 2017                 [Page 22]
+
+Internet-Draft           IPv6 Node Requirements             October 2016
+
+
+16.  Security Considerations
 
    This document does not directly affect the security of the Internet,
    beyond the security considerations associated with the individual
@@ -1218,23 +1242,15 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
    Security is also discussed in Section 11 above.
 
-16.  Authors and Acknowledgments
+17.  Authors and Acknowledgments
 
-16.1.  Authors and Acknowledgments (Current Document)
+17.1.  Authors and Acknowledgments (Current Document)
 
    For this version of the IPv6 Node Requirements document, the authors
    would like to thank **BIS Add new acknowledgements for significant
    comments ** for their contributions.
 
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 22]
-
-Internet-Draft           IPv6 Node Requirements             October 2016
-
-
-16.2.  Authors and Acknowledgments from RFC 6434
+17.2.  Authors and Acknowledgments from RFC 6434
 
    Ed Jankiewicz and Thomas Narten were named authors of the previous
    iteration of this document, RFC6434.
@@ -1244,7 +1260,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    Bob Hinden, Paul Hoffman, Pekka Savola, Yaron Sheffer, and Dave
    Thaler.
 
-16.3.  Authors and Acknowledgments from RFC 4294
+17.3.  Authors and Acknowledgments from RFC 4294
 
    The original version of this document (RFC 4294) was written by the
    IPv6 Node Requirements design team:
@@ -1269,23 +1285,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Chown, et al.            Expires April 30, 2017                [Page 23]
+Chown, et al.              Expires May 1, 2017                 [Page 23]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1341,12 +1341,12 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 24]
+Chown, et al.              Expires May 1, 2017                 [Page 24]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
 
-17.  Appendix: Changes from RFC 4294
+18.  Appendix: Changes from RFC 4294
 
    There have been many editorial clarifications as well as significant
    additions and updates.  While this section highlights some of the
@@ -1397,7 +1397,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 25]
+Chown, et al.              Expires May 1, 2017                 [Page 25]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1423,9 +1423,9 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
    22.  Made "IPv6 Flow Label Specification" [RFC6437] a SHOULD.
 
-18.  References
+19.  References
 
-18.1.  Normative References
+19.1.  Normative References
 
    [RFC1034]  Mockapetris, P., "Domain names - concepts and facilities",
               STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987,
@@ -1453,7 +1453,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 26]
+Chown, et al.              Expires May 1, 2017                 [Page 26]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 27]
+Chown, et al.              Expires May 1, 2017                 [Page 27]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 28]
+Chown, et al.              Expires May 1, 2017                 [Page 28]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 29]
+Chown, et al.              Expires May 1, 2017                 [Page 29]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1666,7 +1666,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
               DOI 10.17487/RFC6437, November 2011,
               <http://www.rfc-editor.org/info/rfc6437>.
 
-18.2.  Informative References
+19.2.  Informative References
 
    [RFC0793]  Postel, J., "Transmission Control Protocol", STD 7,
               RFC 793, DOI 10.17487/RFC0793, September 1981,
@@ -1677,7 +1677,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 30]
+Chown, et al.              Expires May 1, 2017                 [Page 30]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 31]
+Chown, et al.              Expires May 1, 2017                 [Page 31]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 32]
+Chown, et al.              Expires May 1, 2017                 [Page 32]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 33]
+Chown, et al.              Expires May 1, 2017                 [Page 33]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1901,4 +1901,4 @@ Authors' Addresses
 
 
 
-Chown, et al.            Expires April 30, 2017                [Page 34]
+Chown, et al.              Expires May 1, 2017                 [Page 34]
