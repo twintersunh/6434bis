@@ -794,8 +794,8 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
       target='RFC3810' />, <xref target='RFC4604' />, and <xref
       target='RFC4607' />.  Nodes supporting applications that expect
       to only take advantage of MLDv2's INCLUDE functionality as well
-      as Any-Source Multicast will find it sufficient to support MLDv2
-      as defined in <xref target='RFC5790' />. </t>
+      as Any-Source Multicast will find it sufficient to support Lightweight 
+      MLDv2 as defined in <xref target='RFC5790' />. </t>
 
       <t> If a node only supports applications that use Any-Source
       Multicast (i.e, they do not use Source-Specific Multicast),
