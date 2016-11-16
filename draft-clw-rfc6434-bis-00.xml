@@ -751,10 +751,6 @@ as per RFC 7217. **
  	Consequently, all hosts SHOULD implement address configuration
  	via DHCPv6.</t>
 
-	<t>
-        **BIS Update to **
-	</t>
-
         <t> In the absence of a router, IPv6 nodes using DHCP for
 	address assignment MAY initiate DHCP to obtain IPv6 addresses
 	and other configuration information, as described in Section
