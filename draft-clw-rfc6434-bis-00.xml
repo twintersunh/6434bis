@@ -750,6 +750,10 @@ as per RFC 7217. **
  	some of which may require DHCPv6 for address assignment.
  	Consequently, all hosts SHOULD implement address configuration
  	via DHCPv6.</t>
+  
+        <t> 
+          **BIS SHOULD?
+        </t>
 
         <t> In the absence of a router, IPv6 nodes using DHCP for
 	address assignment MAY initiate DHCP to obtain IPv6 addresses
@@ -1236,6 +1240,9 @@ Note that
 
     <section title="Management Information Base (MIB) Modules">
 
+      <t>
+      **Bis Address MIB Obsolete draft 
+      </t>
       <t>The following two MIB modules SHOULD be supported by nodes that
 support a Simple Network Management Protocol (SNMP) agent.</t>
 
