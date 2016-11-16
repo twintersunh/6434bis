@@ -752,7 +752,7 @@ as per RFC 7217. **
  	via DHCPv6.</t>
 
 	<t>
-**BIS  Including Android? :) **
+        **BIS Update to **
 	</t>
 
         <t> In the absence of a router, IPv6 nodes using DHCP for
@@ -976,11 +976,6 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
       addresses in text form SHOULD support "A Recommendation for
       IPv6 Address Text Representation" <xref target='RFC5952' />.</t>
       
-    </section>
-    <section title="Happy Eyeballs">
-      <t>
-      **BIS Add Happy Eyeballs RFC6555 **
-      </t>
     </section>
 
     <section title="Application Programming Interfaces (APIs)">
@@ -1273,12 +1268,6 @@ efficiency here in a new section?
 Talk about resource management in nodes.
 Low power operation.
 	</t>
-  </section>
-
-  <section title="IPv6 Switch behavior">
-  <t>
-**BIS Add RA Guard and Snooping for features that IPv6 Switch might implement?
-  </t>
   </section>
 
   <section title="Security Considerations">
