@@ -6,9 +6,9 @@ Internet Engineering Task Force                                 T. Chown
 Internet-Draft                                                      Jisc
 Obsoletes: 6434 (if approved)                                J. Loughney
 Intended status: Informational                                     Nokia
-Expires: May 1, 2017                                          T. Winters
+Expires: May 4, 2017                                          T. Winters
                                              University of New Hampshire
-                                                        October 28, 2016
+                                                        October 31, 2016
 
 
                          IPv6 Node Requirements
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 1]
+Chown, et al.              Expires May 4, 2017                  [Page 1]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -63,7 +63,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 1, 2017.
+   This Internet-Draft will expire on May 4, 2017.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 2]
+Chown, et al.              Expires May 4, 2017                  [Page 2]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -165,7 +165,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 3]
+Chown, et al.              Expires May 4, 2017                  [Page 3]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -221,7 +221,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 4]
+Chown, et al.              Expires May 4, 2017                  [Page 4]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -277,7 +277,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 5]
+Chown, et al.              Expires May 4, 2017                  [Page 5]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -333,7 +333,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 6]
+Chown, et al.              Expires May 4, 2017                  [Page 6]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -389,7 +389,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 7]
+Chown, et al.              Expires May 4, 2017                  [Page 7]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -445,7 +445,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 8]
+Chown, et al.              Expires May 4, 2017                  [Page 8]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -501,7 +501,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                  [Page 9]
+Chown, et al.              Expires May 4, 2017                  [Page 9]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -557,7 +557,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 10]
+Chown, et al.              Expires May 4, 2017                 [Page 10]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -613,7 +613,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 11]
+Chown, et al.              Expires May 4, 2017                 [Page 11]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -669,7 +669,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 12]
+Chown, et al.              Expires May 4, 2017                 [Page 12]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -725,7 +725,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 13]
+Chown, et al.              Expires May 4, 2017                 [Page 13]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -739,8 +739,6 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    requirements, some of which may require DHCPv6 for address
    assignment.  Consequently, all hosts SHOULD implement address
    configuration via DHCPv6.
-
-   **BIS Including Android? :) **
 
    In the absence of a router, IPv6 nodes using DHCP for address
    assignment MAY initiate DHCP to obtain IPv6 addresses and other
@@ -777,18 +775,17 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    Any-Source Multicast will find it sufficient to support MLDv2 as
    defined in [RFC5790].
 
+   If a node only supports applications that use Any-Source Multicast
+   (i.e, they do not use Source-Specific Multicast), implementing MLDv1
+   [RFC2710] is sufficient.  In all cases, however, nodes are strongly
 
 
 
-
-Chown, et al.              Expires May 1, 2017                 [Page 14]
+Chown, et al.              Expires May 4, 2017                 [Page 14]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
 
-   If a node only supports applications that use Any-Source Multicast
-   (i.e, they do not use Source-Specific Multicast), implementing MLDv1
-   [RFC2710] is sufficient.  In all cases, however, nodes are strongly
    encouraged to implement MLDv2 or Lightweight MLDv2 rather than MLDv1,
    as the presence of a single MLDv1 participant on a link requires that
    all other nodes on the link operate in version 1 compatibility mode.
@@ -833,17 +830,17 @@ Internet-Draft           IPv6 Node Requirements             October 2016
    as a Standards Track document.  Consequently, DNS configuration
    information can now be learned either through DHCP or through RAs.
    Hosts will need to decide which mechanism (or whether both) should be
+   implemented.  Specific guidance regarding DNS server discovery is
+   discussed in Section 7.
 
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 15]
+
+Chown, et al.              Expires May 4, 2017                 [Page 15]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
-
-   implemented.  Specific guidance regarding DNS server discovery is
-   discussed in Section 7.
 
 7.  DNS and DHCP
 
@@ -893,7 +890,10 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 16]
+
+
+
+Chown, et al.              Expires May 4, 2017                 [Page 16]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -949,7 +949,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 17]
+Chown, et al.              Expires May 4, 2017                 [Page 17]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 18]
+Chown, et al.              Expires May 4, 2017                 [Page 18]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 19]
+Chown, et al.              Expires May 4, 2017                 [Page 19]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1117,7 +1117,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 20]
+Chown, et al.              Expires May 4, 2017                 [Page 20]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1173,7 +1173,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 21]
+Chown, et al.              Expires May 4, 2017                 [Page 21]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1229,7 +1229,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 22]
+Chown, et al.              Expires May 4, 2017                 [Page 22]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1285,7 +1285,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 23]
+Chown, et al.              Expires May 4, 2017                 [Page 23]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1341,7 +1341,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 24]
+Chown, et al.              Expires May 4, 2017                 [Page 24]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1397,7 +1397,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 25]
+Chown, et al.              Expires May 4, 2017                 [Page 25]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1453,7 +1453,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 26]
+Chown, et al.              Expires May 4, 2017                 [Page 26]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 27]
+Chown, et al.              Expires May 4, 2017                 [Page 27]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 28]
+Chown, et al.              Expires May 4, 2017                 [Page 28]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 29]
+Chown, et al.              Expires May 4, 2017                 [Page 29]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1677,7 +1677,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 30]
+Chown, et al.              Expires May 4, 2017                 [Page 30]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 31]
+Chown, et al.              Expires May 4, 2017                 [Page 31]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 32]
+Chown, et al.              Expires May 4, 2017                 [Page 32]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft           IPv6 Node Requirements             October 2016
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 33]
+Chown, et al.              Expires May 4, 2017                 [Page 33]
 
 Internet-Draft           IPv6 Node Requirements             October 2016
 
@@ -1901,4 +1901,4 @@ Authors' Addresses
 
 
 
-Chown, et al.              Expires May 1, 2017                 [Page 34]
+Chown, et al.              Expires May 4, 2017                 [Page 34]
