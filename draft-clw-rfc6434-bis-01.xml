@@ -548,10 +548,6 @@ The details of how one uses ND on
 **BIS Add note about 1280 MTU and UDP, as per Mark Andrews' comments in Berlin? **
 	</t>
 
-	<t>
-**BIS Add note about RFC 4821, PLMTUD - is it appropriate here? **
-	</t>
-	
       </section>
 
     </section>
@@ -733,14 +729,10 @@ And no need for note on IID significance, as per RFC 7136. **
  	configuration of addresses through Router Advertisements,
  	DHCPv6, or both.  There will be a wide range of IPv6 deployment
  	models and differences in address assignment requirements,
- 	some of which may require DHCPv6 for address assignment.
+ 	some of which may require DHCPv6 for stateful address assignment.
  	Consequently, all hosts SHOULD implement address configuration
  	via DHCPv6.</t>
   
-        <t> 
-          **BIS SHOULD?
-        </t>
-
         <t> In the absence of a router, IPv6 nodes using DHCP for
 	address assignment MAY initiate DHCP to obtain IPv6 addresses
 	and other configuration information, as described in Section
@@ -750,6 +742,7 @@ And no need for note on IID significance, as per RFC 7136. **
 
     <section title="Multicast Listener Discovery (MLD) for IPv6" anchor="mld">
 
+      <t>**BIS MLDv2 only?</t>
       <t> Nodes that need to join multicast groups MUST support MLDv1
       <xref target='RFC2710' />. MLDv1 is needed by any node that is
       expected to receive and process multicast traffic. Note that
@@ -835,19 +828,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
       such environments, hosts would need to implement multiple
       configuration mechanisms to ensure interoperability.</t>
 
-      <t>Originally, in IPv6, configuring information about DNS servers
-      was performed exclusively via DHCP. In 2007, an RA option was
-      defined but was published as Experimental <xref
-      target='RFC5006' />. In 2010, "IPv6 Router Advertisement Options
-      for DNS Configuration" <xref target='RFC6106' /> was published
-      as a Standards Track document. Consequently, DNS configuration
-      information can now be learned either through DHCP or through
-      RAs. Hosts will need to decide which mechanism (or whether both)
-      should be implemented. Specific guidance regarding DNS server
-      discovery is discussed in <xref target="DNSandDHCP" />.</t>
-
    </section>
-
 
   <section title="DNS and DHCP" anchor="DNSandDHCP">
 
@@ -927,10 +908,6 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<t>Implementations SHOULD implement the DNS RA option
 	<xref target='RFC6106' />. </t>
 
-	<t>
-**BIS repeats text from section 6 - remove the section 6 duplication? **
-	</t>
-
       </section>
   </section>
 
@@ -997,44 +974,11 @@ Interface (POSIX) <xref target='POSIX' />.</t>
 
   </section>
 
-  <section title="Mobility" anchor="mobility">
+  <section title="Cellular Host" anchor="mobility">
 
-    <t>Mobile IPv6 <xref target='RFC6275'/> and associated
-    specifications <xref target='RFC3776' /> <xref target='RFC4877' />
-    allow a node to change its point of attachment within the
-    Internet, while maintaining (and using) a permanent address. All
-    communication using the permanent address continues to proceed as
-    expected even as the node moves around. The definition of Mobile
-    IP includes requirements for the following types of nodes:</t>
-
-    <t><list style='hanging'>
-      <t>  -  mobile nodes</t>
-      <t>  -  correspondent nodes with support for route optimization</t>
-      <t>  -  home agents</t>
-      <t>  -  all IPv6 routers</t>
-    </list></t>
-
-    <t> At the present time, Mobile IP has seen only limited
-    implementation and no significant deployment, partly because it
-    originally assumed an IPv6-only environment rather than a mixed
-    IPv4/IPv6 Internet. Recently, additional work has been done to
-    support mobility in mixed-mode IPv4 and IPv6
-    networks <xref target='RFC5555' />. </t>
-
-    <t> More usage and deployment experience is needed with mobility
-    before any specific approach can be recommended for broad
-    implementation in all hosts and routers. Consequently, <xref
-    target='RFC6275' />, <xref target='RFC5555' />, and associated
-    standards such as <xref target='RFC4877' /> are considered a MAY
-    at this time.</t>
-
-	<t>
-**BIS Mobile IPv6 for hosts seems in scant usage; no OSes support it?  Do we say it's effectively dead, and point at mobile network work instead? **
-	</t>
-
-       <t>
-**BIS need to add 3G /64 RFC 7278**
-       </t>
+    <t> IPv6 for 3GPP <xref target='RFC7066'/> lists IPv6 Functionalities that need to be implemented above
+       and beyond the recommendations in this document. Additionally a 3GPP IPv6 Host MAY implement
+       <xref target='RFC7278' /> for delivering IPv6 prefixes on the LAN link.</t>
 
   </section>
 
@@ -1116,7 +1060,7 @@ Note that
 	frequently than security protocols. Therefore, implementations
 	MUST allow for migration to new algorithms, as RFC 4835 is
 	replaced or updated in the future.</t>
-     <t>**BIS update to 7321 or 7321bis**
+     <t>**BIS update to 7321bis**
      </t>
 
      <t> The current set of mandatory-to-implement algorithms for
@@ -1181,7 +1125,7 @@ Note that
 	either a single LAN or multiple LANs attached to the single
 	router, together with a WAN connection, a DHCP server
 	embedded within the router is one common deployment scenario
-	(e.g., <xref target='RFC6204' />). However, there is no need
+	(e.g., <xref target='RFC7084' />). However, there is no need
 	for relay agents in such scenarios.  </t>
 
 	<t> In more complex deployment scenarios, such as within
@@ -1196,7 +1140,7 @@ Note that
 	routers targeted for deployment within more complex scenarios
 	(as described above) SHOULD support relay agent functionality.
 	Note that "Basic Requirements for IPv6 Customer Edge Routers"
-	<xref target='RFC6204' /> requires implementation of a DHCPv6
+	<xref target='RFC7084' /> requires implementation of a DHCPv6
 	server function in IPv6 Customer Edge (CE) routers. </t>
 
       </section>
@@ -1218,7 +1162,7 @@ Note that
     <section title="Management Information Base (MIB) Modules">
 
       <t>
-      **Bis Address MIB Obsolete draft 
+      **BIS Address MIB Obsolete draft 
       </t>
       <t>The following two MIB modules SHOULD be supported by nodes that
 support a Simple Network Management Protocol (SNMP) agent.</t>
@@ -1354,6 +1298,7 @@ For this version of the document, the authors
     <list style='numbers'>
     <t>Added 6LoWPAN to link layers</t>
     <t>Removed DOD IPv6 Profile updates</t>
+    <t>Removed IPv6 Mobility RFC6275</t>
     </list>
     </t>
 
@@ -1470,7 +1415,6 @@ and made it a
   <?rfc include="reference.RFC.5952" ?>
   <?rfc include="reference.RFC.5996" ?>
   <?rfc include="reference.RFC.6106" ?>
-  <?rfc include="reference.RFC.6204" ?>
   <?rfc include="reference.RFC.6437" ?>
   <?rfc include="reference.RFC.6564" ?>
   <?rfc include="reference.RFC.6724" ?>
@@ -1499,7 +1443,6 @@ and made it a
   <?rfc include="reference.RFC.3542" ?>
   <?rfc include="reference.RFC.3678" ?>
   <?rfc include="reference.RFC.6275" ?>
-  <?rfc include="reference.RFC.3776" ?>
   <?rfc include="reference.RFC.3971" ?>
   <?rfc include="reference.RFC.3972" ?>
   <?rfc include="reference.RFC.4191" ?>
@@ -1509,16 +1452,16 @@ and made it a
   <?rfc include="reference.RFC.4429" ?>
   <?rfc include="reference.RFC.4584" ?>
   <?rfc include="reference.RFC.4821" ?>
-  <?rfc include="reference.RFC.4877" ?>
   <?rfc include="reference.RFC.4884" ?>
   <?rfc include="reference.RFC.4944" ?>
   <?rfc include="reference.RFC.5006" ?>
   <?rfc include="reference.RFC.5014" ?>
   <?rfc include="reference.RFC.5072" ?>
   <?rfc include="reference.RFC.5121" ?>
-  <?rfc include="reference.RFC.5555" ?>
   <?rfc include="reference.RFC.6563" ?>
+  <?rfc include="reference.RFC.7066" ?>
   <?rfc include="reference.RFC.7084" ?>
+  <?rfc include="reference.RFC.7278" ?>
   <?rfc include="reference.RFC.7721" ?>
   <?rfc include="reference.RFC.7934" ?>
 
