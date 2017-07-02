@@ -83,7 +83,7 @@
     </author>
 
 
-    <date month="May" year="2017" />
+    <date month="July" year="2017" />
     <area> Internet </area>
     <workgroup>Internet Engineering Task Force</workgroup>
 
@@ -109,7 +109,7 @@
 
   <section title="Introduction">
 
-    <t>This document defines common functionality required from both
+    <t>This document defines common functionality required by both
     IPv6 hosts and routers.  Many IPv6 nodes will implement optional
     or additional features, but this document collects and summarizes
     requirements from other published Standards Track documents in one
@@ -264,8 +264,6 @@ It is provided for informational purposes only and may
 	  <t hangText="-"> IP version 6 over PPP
 	  <xref target='RFC5072' /></t>
 
-          <t hangText="-"> IPv6 over IEEE 802.15.4 Networks 
-          <xref target='RFC4944' /></t>
 	</list>
 
     </t>
@@ -319,9 +317,9 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 	<t>
 	<xref target='RFC6946'/> discusses IPv6 atomic fragments, and
 	recommends that IPv6 atomic fragments are processed independently 
-	of any other fragments, to protect against fragmenttation-based
+	of any other fragments, to protect against fragmentation-based
 	attacks. <xref target='RFC8021'/> goes further and recommends
-	the deprecation of atomic fragments. Nodes thus MUST not
+	the deprecation of atomic fragments. Nodes thus MUST NOT
 	generate atomic fragments.
 	</t>
 
@@ -331,6 +329,21 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
     	in Fragment Headers, as discussed in <xref target='RFC7739'/>.
 	</t>
 
+<t>All nodes SHOULD support the setting and use of the IPv6 Flow
+Label field as defined in the IPv6 Flow Label specification
+<xref target='RFC6437' />.  Forwarding nodes such as routers and load distributors
+MUST NOT depend only on Flow Label values being uniformly
+distributed.  It is RECOMMENDED that source hosts support the flow
+label by setting the Flow Label field for all packets of a given
+flow to the same value chosen from an approximation to a discrete
+uniform distribution.
+
+</t>
+ 
+    </section>
+ 
+    <section title="Support for IPv6 Extension Headers">
+
       <t>RFC 2460 specifies extension headers and the processing for
       these headers.</t>
 
@@ -338,12 +351,6 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 	exception is Routing Header type 0 (RH0), which was deprecated
 	by <xref target='RFC5095' /> due to security concerns and
 	which MUST be treated as an unrecognized routing type.</t>
-
-	<t>
-	Should a new type of Extension Header need to be defined, 
-	its format MUST follow the consistent format described in Section
-	4 of <xref target='RFC6564'/>. 
-	</t>
 
 	<t>
 	Further, <xref target='RFC7045'/> adds specific requirements for
@@ -360,22 +367,27 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 	</t>
 
 	<t>
-**BIS Wait to see outcome of insertion of EHs issue in 2460-bis, and re-state here? **
+	As stated in RFC2460,
+	extension headers (except for the Hop-by-Hop Options header) are not
+   processed, inserted, or deleted by any node along a packet's delivery
+   path, until the packet reaches the node (or each of the set of nodes,
+   in the case of multicast) identified in the Destination Address field
+   of the IPv6 header.
 	</t>
 
-<t>All nodes SHOULD support the setting and use of the IPv6 Flow
-Label field as defined in the IPv6 Flow Label specification
-<xref target='RFC6437' />.  Forwarding nodes such as routers and load distributors
-MUST NOT depend only on Flow Label values being uniformly
-distributed.  It is RECOMMENDED that source hosts support the flow
-label by setting the Flow Label field for all packets of a given
-flow to the same value chosen from an approximation to a discrete
-uniform distribution.
+	<t>
+	Should a new type of Extension Header need to be defined, 
+	its format MUST follow the consistent format described in Section
+	4 of <xref target='RFC6564'/>. 
+	</t>
 
-</t>
- 
+	<t>
+** BIS add text on host side processing of IPv6 EHs.  
+	From list discussion about protecting receiver from excessive EH options/pads/etc.
+	</t>
+
     </section>
- 
+
     <section title="Neighbor Discovery for IPv6 - RFC 4861" anchor="ND">
 
       <t>Neighbor Discovery is defined in <xref target='RFC4861' />; the
@@ -453,25 +465,6 @@ The details of how one uses ND on
 
     </section>
 
-    <section title="Default Router Preferences and More-Specific
-    Routes - RFC 4191">
-
-    <t>"Default Router Preferences and More-Specific Routes" <xref target='RFC4191' /> provides support for nodes attached to
-    multiple (different) networks, each providing routers that
-    advertise themselves as default routers via Router
-    Advertisements. In some scenarios, one router may provide
-    connectivity to destinations the other router does not, and
-    choosing the "wrong" default router can result in reachability
-    failures. In such cases, RFC 4191 can help.</t>
-
-    <t> Small Office/Home Office (SOHO) deployments supported by
-    routers adhering to <xref target='RFC7084' /> use
-    RFC 4191  to advertise routes to certain local
-    destinations. Consequently, nodes that will be deployed in SOHO
-    environments SHOULD implement RFC 4191.</t>
-
-    </section>
-
     <section title="SEcure Neighbor Discovery (SEND) - RFC 3971">
 
       <t>
@@ -497,8 +490,7 @@ The details of how one uses ND on
 
     </section>
  
-    <section title="IPv6 Router Advertisement Flags Option - RFC
-      5175">
+    <section title="IPv6 Router Advertisement Flags Option - RFC 5175">
 
       <t> Router Advertisements include an 8-bit field of single-bit
       Router Advertisement flags.  The Router Advertisement Flags
@@ -557,7 +549,7 @@ The details of how one uses ND on
 
      <t> IPv6 Jumbograms <xref target='RFC2675' /> are an optional
       extension that allow the sending of IP datagrams larger than
-      65.535 bytes.  IPv6 Jumbograms make use of IPv6 hop-by-hop
+      65,535 bytes.  IPv6 Jumbograms make use of IPv6 hop-by-hop
       options and are only suitable on paths in which every hop and
       link are capable of supporting Jumbograms (e.g., within a campus
       or datacenter). To date, few implementations exist, and there is
@@ -571,8 +563,7 @@ The details of how one uses ND on
 
     </section>
 
-    <section title="ICMP for the Internet Protocol Version 6 (IPv6) -
-      RFC 4443">
+    <section title="ICMP for the Internet Protocol Version 6 (IPv6) - RFC 4443">
 
       <t>ICMPv6 <xref target='RFC4443' /> MUST be supported. "Extended
       ICMP to Support Multi-Part Messages" <xref target='RFC4884' />
@@ -580,7 +571,81 @@ The details of how one uses ND on
 
       </section>
 
-    <section title="Addressing">
+    <section title="Default Router Preferences and More-Specific Routes - RFC 4191">
+
+    <t>"Default Router Preferences and More-Specific Routes" <xref target='RFC4191' /> provides support for nodes attached to
+    multiple (different) networks, each providing routers that
+    advertise themselves as default routers via Router
+    Advertisements. In some scenarios, one router may provide
+    connectivity to destinations the other router does not, and
+    choosing the "wrong" default router can result in reachability
+    failures. In such cases, RFC 4191 can help.</t>
+
+    <t> Small Office/Home Office (SOHO) deployments supported by
+    routers adhering to <xref target='RFC7084' /> use
+    RFC 4191  to advertise routes to certain local
+    destinations. Consequently, nodes that will be deployed in SOHO
+    environments SHOULD implement RFC 4191.</t>
+
+    </section>
+
+    <section title="First-Hop Router Selection - RFC 8028">
+
+	<t>
+	In multihomed scenarios, where a host has more than one prefix, 
+	each allocated by an upstream network that is assumed to implement 
+	BCP 38 ingress filtering, the host may have multiple routers to 
+	choose from.
+	</t>
+
+	<t>Hosts that may be deployed in such multihomed environments
+	SHOULD follow the guidance given in <xref target='RFC8028' />.
+	</t>
+    </section>
+
+    <section title="Multicast Listener Discovery (MLD) for IPv6 - RFC 3810" anchor="mld">
+
+      <t> Nodes that need to join multicast groups MUST support MLDv2
+      <xref target='RFC3810' />. MLD is needed by any node that is
+      expected to receive and process multicast traffic and in particular
+	MLDv2 is required for support for source-specific multicast (SSM) as 
+	per <xref target='RFC4607' />.
+	</t>
+
+      <t> Previous version of this document only required MLDv1 to be implemented 
+      on all nodes.  Since participation of any
+      MLDv1-only nodes on a link require that all other nodeas on the link then
+      operate in version 1 compatibility mode, the requirement to support MLDv2
+      on all nodes was upgraded to a MUST. Further, SSM is now the preferred
+	multicast distribution method, rather than ASM.</t>
+
+	<t>
+	Note that
+      Neighbor Discovery (as used on most link types -- see <xref
+target="ND" />) depends on multicast and requires that nodes join Solicited
+      Node multicast addresses.</t>
+
+  </section>
+
+	<section title="Explicit Congestion Notification (ECN) - RFC 3168">
+
+	<t>
+	An ECN-aware router may set a mark in the IP header instead of dropping a 
+	packet in order to signal impending congestion. The receiver of 
+	the packet echoes the congestion indication to the sender, which can then
+	reduce its transmission rate as if it detected a dropped packet.
+	</t>
+
+	<t>Nodes that may be deployed in environments where they would benefit
+	from such early congestion notification SHOULD implement 
+	<xref target='RFC3168' />.
+	</t>
+
+	</section>
+
+</section>
+
+    <section title="Addressing and Address Configuration">
 
     <section title="IP Version 6 Addressing Architecture - RFC 4291">
         <t>The IPv6 Addressing Architecture <xref target='RFC4291' />
@@ -713,15 +778,6 @@ And no need for note on IID significance, as per RFC 7136. **
 
       </section>
 
-      <section title="Default Address Selection for IPv6 - RFC 6724">
-
-        <t>IPv6 nodes will invariably have multiple addresses configured simultaneously,
-	and thus will need to choose which addresses to use for which communications.
-        The rules specified in the Default Address Selection for
-        IPv6 <xref target='RFC6724' /> document MUST be implemented.</t>
-
-	</section>
-
       <section title="Stateful Address Autoconfiguration (DHCPv6) - RFC 3315" anchor="stateful1">
 
          <t> DHCPv6 <xref target='RFC3315' /> can be used to obtain and
@@ -738,34 +794,105 @@ And no need for note on IID significance, as per RFC 7136. **
 	and other configuration information, as described in Section
 	5.5.2 of <xref target='RFC4862' />.</t>
 
-        </section> </section>
+	<t>Where devices are likely to be carried by users and attached
+	to multiple visisted networks, DHCPv6 client
+	anonymity profiles SHOULD be supported as described in <xref target='RFC7844' /> 
+	to minimise the discolosure of identifying information.</t>
+	
+        </section> 
 
-    <section title="Multicast Listener Discovery (MLD) for IPv6" anchor="mld">
+      <section title="Default Address Selection for IPv6 - RFC 6724">
 
-      <t> Nodes that need to join multicast groups MUST support MLDv2
-      <xref target='RFC3810' />. MLDv2 is needed by any node that is
-      expected to receive and process multicast traffic. Note that
-      Neighbor Discovery (as used on most link types -- see <xref
-target="ND" />) depends on multicast and requires that nodes join Solicited
-      Node multicast addresses.</t>
+        <t>IPv6 nodes will invariably have multiple addresses configured simultaneously,
+	and thus will need to choose which addresses to use for which communications.
+        The rules specified in the Default Address Selection for
+        IPv6 <xref target='RFC6724' /> document MUST be implemented.</t>
 
-      <t> Previous version of this document required MLDv1 to be implemented 
-      on all nodes.  Most IPv6 nodes now support MLDv2.  Since 
-      MLDv1 participants on a link requires that all other nodeas on the link 
-      operate in version 1 compatibility mode, it's recommended to support MLDv2
-      on all nodes.</t> 
-  
-      <t>Nodes MAY support Source-Specific Multicast as defined 
-      in <xref target='RFC4607' /> for specific application needs.</t>
+	</section>
+
+	</section>
+
+
+    <section title="DNS">
+
+      <t>DNS is described in <xref target='RFC1034' />, <xref
+      target='RFC1035' />, <xref target='RFC3363' />, and <xref
+      target='RFC3596' />.  Not all nodes will need to resolve names;
+      those that will never need to resolve DNS names do not need to
+      implement resolver functionality.  However, the ability to
+      resolve names is a basic infrastructure capability on which
+      applications rely, and most nodes will need to provide
+      support.  All nodes SHOULD implement stub-resolver <xref target='RFC1034'
+/> functionality, as in <xref target='RFC1034'/>, Section
+      5.3.1, with support for:</t>
+
+      <t><list style='hanging'>
+        <t hangText="-">AAAA type Resource Records <xref target='RFC3596' />;</t>
+        <t hangText="-">reverse addressing in ip6.arpa using PTR records <xref target='RFC3596' />;</t>
+        <t hangText="-">Extension Mechanisms for DNS (EDNS0) <xref target='RFC6891' /> to allow for DNS packet sizes larger than 512 octets.</t>
+      </list></t>
+
+      <t>Those nodes are RECOMMENDED to support DNS security extensions <xref target='RFC4033' /> <xref target='RFC4034' /> <xref target='RFC4035' />.</t>
+
+      <t>A6 Resource Records, which were only ever defined with Experimental status in <xref target='RFC3363' />,
+	 are now classified as Historic, as per <xref target='RFC6563'/>. </t>
 
     </section>
-  </section>
 
-  <section title="DHCP versus Router Advertisement Options for Host Configuration">
+  <section title="Configuring Non-Address Information" anchor="OtherConfig">
 
-<t>
-**BIS this section probably needs rewriting **
-</t>
+
+      <section title="DHCP for Other Configuration Information">
+
+      <t>IPv6 nodes use DHCP <xref target='RFC3315' /> to obtain
+         address configuration information (see <xref target="stateful1" />) and to
+         obtain additional (non-address) configuration.  If a host
+         implementation supports applications or other protocols that
+         require configuration that is only available via DHCP, hosts
+         SHOULD implement DHCP. For specialized devices on which no
+         such configuration need is present, DHCP may not be
+         necessary.</t>
+
+        <t>An IPv6 node can use the subset of DHCP (described in
+        <xref target='RFC3736' />) to obtain other configuration
+        information.</t>
+
+      </section>
+
+      <section title="Router Advertisements and Default Gateway">
+
+	<t>There is no defined DHCPv6 Gateway option.</t>
+
+        <t>Nodes using the Dynamic Host Configuration Protocol for
+        IPv6 (DHCPv6) are thus expected to determine their default router
+        information and on-link prefix information from received
+        Router Advertisements. 
+	</t>
+
+    </section>
+
+    <section title="IPv6 Router Advertisement Options for DNS
+        Configuration - RFC 8106">
+
+        <t>Router Advertisements have historically limited options to
+        those that are critical to basic IPv6 functioning. Originally,
+        DNS configuration was not included as an RA option, and DHCP
+        was the recommended way to obtain DNS configuration
+        information. Over time, the thinking surrounding such an
+        option has evolved. It is now generally recognized that few
+        nodes can function adequately without having access to a
+        working DNS resolver, and thus a 
+        Standards Track document has been published to provide this
+	capability <xref target='RFC8106' />.</t>
+
+	<t>Implementations MUST include support for the DNS RA option
+	<xref target='RFC8106' />. </t>
+
+      </section>
+
+  <section title="DHCP Options versus Router Advertisement Options for Host Configuration">
+
+	<t>**BIS needs rewriting </t>
 
       <t> In IPv6, there are two main protocol mechanisms for
       propagating configuration information to hosts: Router
@@ -798,87 +925,31 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
       configuration mechanisms to ensure interoperability.</t>
 
    </section>
-
-  <section title="DNS and DHCP" anchor="DNSandDHCP">
-
-    <section title="DNS">
-
-      <t>DNS is described in <xref target='RFC1034' />, <xref
-      target='RFC1035' />, <xref target='RFC3363' />, and <xref
-      target='RFC3596' />.  Not all nodes will need to resolve names;
-      those that will never need to resolve DNS names do not need to
-      implement resolver functionality.  However, the ability to
-      resolve names is a basic infrastructure capability on which
-      applications rely, and most nodes will need to provide
-      support.  All nodes SHOULD implement stub-resolver <xref target='RFC1034'
-/> functionality, as in <xref target='RFC1034'/>, Section
-      5.3.1, with support for:</t>
-
-      <t><list style='hanging'>
-        <t hangText="-">AAAA type Resource Records <xref target='RFC3596' />;</t>
-        <t hangText="-">reverse addressing in ip6.arpa using PTR records <xref target='RFC3596' />;</t>
-        <t hangText="-">Extension Mechanisms for DNS (EDNS0) <xref target='RFC2671' /> to allow for DNS packet sizes larger than 512 octets.</t>
-      </list></t>
-
-      <t>Those nodes are RECOMMENDED to support DNS security extensions <xref target='RFC4033' /> <xref target='RFC4034' /> <xref target='RFC4035' />.</t>
-
-      <t>A6 Resource Records, which were only ever defined with Experimental status in <xref target='RFC3363' />,
-	 are now classified as Historic, as per <xref target='RFC6563'/>. </t>
-
-       <t>
-**BIS Add DNS-SD? **
-       </t>
-
-    </section>
-
-    <section title="Dynamic Host Configuration Protocol for IPv6 (DHCPv6) - RFC 3315">
-
-
-      <section title="Other Configuration Information">
-
-      <t>IPv6 nodes use DHCP <xref target='RFC3315' /> to obtain
-         address configuration information (see <xref target="stateful1" />) and to
-         obtain additional (non-address) configuration.  If a host
-         implementation supports applications or other protocols that
-         require configuration that is only available via DHCP, hosts
-         SHOULD implement DHCP. For specialized devices on which no
-         such configuration need is present, DHCP may not be
-         necessary.</t>
-
-        <t>An IPv6 node can use the subset of DHCP (described in
-        <xref target='RFC3736' />) to obtain other configuration
-        information.</t>
-
-      </section>
-
-      <section title="Use of Router Advertisements in Managed Environments">
-
-        <t>Nodes using the Dynamic Host Configuration Protocol for
-        IPv6 (DHCPv6) are expected to determine their default router
-        information and on-link prefix information from received
-        Router Advertisements. There is no defined DHCPv6 Gateway option.</t>
-
-      </section>
-    </section>
-    <section title="IPv6 Router Advertisement Options for DNS
-        Configuration - RFC 6106">
-
-        <t>Router Advertisements have historically limited options to
-        those that are critical to basic IPv6 functioning. Originally,
-        DNS configuration was not included as an RA option, and DHCP
-        was the recommended way to obtain DNS configuration
-        information. Over time, the thinking surrounding such an
-        option has evolved. It is now generally recognized that few
-        nodes can function adequately without having access to a
-        working DNS resolver.  <xref target='RFC5006'/> was published as an
-        Experimental document in 2007, and recently, a revised version
-        was placed on the Standards Track  <xref target='RFC6106' />.</t>
-
-	<t>Implementations MUST implement the DNS RA option
-	<xref target='RFC6106' />. </t>
-
-      </section>
   </section>
+
+  <section title="Service Discovery Protocols">
+
+	<t><xref target='RFC6762' /> and <xref target='RFC6763' />
+	describe multicast DNS (mDNS) and 
+	DNS-Based Service Discovery (DNS-SD) respectively.
+	These protocols, collectively commonly referred to as the 
+	'Bonjour' protocols after their naming by Apple, provide
+	the means for devices to discover services within a local
+	link and, in the absence of a unicast DNS service, to
+	exchange naming information.
+	</t>
+	<t>
+	Where devices are to be deployed in networks where 
+	service dicovery would be beneficial, e.g., for users
+	seeking to discover printers or display devices, mDNS and 
+	DNS-SD SHOULD be supported.
+	</t>
+	<t>
+	The IETF dnssd WG is defining solutions for DNS-based
+	service discovery in multi-link networks. 
+	</t>
+	
+	</section>
 
   <section title="IPv4 Support and Transition">
 
@@ -897,8 +968,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 
   <section title="Application Support">
 
-    <section title="Textual Representation of IPv6 Addresses - RFC
-    5952">
+    <section title="Textual Representation of IPv6 Addresses - RFC 5952">
       
       <t>Software that allows users and operators to input IPv6
       addresses in text form SHOULD support "A Recommendation for
@@ -1018,7 +1088,7 @@ Note that
       the IPsec Architecture requires (e.g.,  Section 4.5 of RFC 4301) the
       implementation of both manual and automatic key management.
       Currently, the default automated key management protocol to
-      implement is IKEv2  <xref target='RFC5996' />.  </t>
+      implement is IKEv2  <xref target='RFC7296' />.  </t>
 
       <t> This document recognizes that there exists a range of device
    types and environments where approaches to security other than
@@ -1031,7 +1101,10 @@ Note that
    </t>
 
 	<t>
-**BIS Add note on security in IPv4-only networks? RFC 7123? Relevant? **
+	Because most common platforms now support IPv6 and have it
+	enabled by default, IPv6 security is an issue for networks
+	that are ostensibly IPv4-only; see <xref target='RFC7123' />
+	for guidance on this area.
 	</t>
 
     <section title="Requirements">
@@ -1052,11 +1125,11 @@ Note that
     <t> The current set of mandatory-to-implement algorithms for the
 	IPsec Architecture are defined in "Cryptographic
 	Algorithm Implementation Requirements For ESP and AH"
-	<xref target='RFC4835' />.  IPv6 nodes implementing the IPsec
-	Architecture MUST conform to the requirements in <xref target='RFC4835'/>.
+	<xref target='RFC7321' />.  IPv6 nodes implementing the IPsec
+	Architecture MUST conform to the requirements in <xref target='RFC7321'/>.
 	Preferred cryptographic algorithms often change more
 	frequently than security protocols. Therefore, implementations
-	MUST allow for migration to new algorithms, as RFC 4835 is
+	MUST allow for migration to new algorithms, as RFC 7321 is
 	replaced or updated in the future.</t>
      <t>**BIS update to 7321bis**
      </t>
@@ -1144,6 +1217,32 @@ Note that
       </section>
     </section>
 
+  <section title="Constrained Devices">
+	
+	<t>
+	The target for this document is general IPv6 nodes. In the case of constrained nodes, 
+	with limited CPU, memory, bandwidth or power, support for certain IPv6 functionality may need	
+	to be considered due to those limitations.  The requirements of this document are
+	RECOMMENDED for all nodes, including constrained nodes, but compromises may need to be
+	made in certain cases.  Where such compromises are made, the interoperability of devices
+	should be strongly considered, paticularly where this may impact other nodes on the same
+	link, e.g., only supporting MLDv1 will affect other nodes.
+	</t>
+
+	<t>The IETF 6LowPAN (IPv6 over Low Power LWPAN) WG defined six RFCs, including a general
+	overview and problem statement (<xref target='RFC4919' />, the means by which IPv6 packets 
+	are transmitted over IEEE 802.15.4 networks <xref target='RFC4944' />
+	and ND optimisations for that medium <xref target='RFC6775' />.
+	</t>
+
+	<t>
+**BIS What else to say here?
+Talk about resource management in nodes?
+Low power operation?
+	</t>
+
+  </section>
+
   <section title="Network Management">
 
     <t>Network management MAY be supported by IPv6 nodes.  However,
@@ -1196,17 +1295,6 @@ support a Simple Network Management Protocol (SNMP) agent.</t>
 
   </section>
 
-
-  <section title="Constrained Devices">
-	
-	<t>
-**BIS Should we add notes on constrained devices, and power
-efficiency here in a new section? 
-Talk about resource management in nodes.
-Low power operation.
-	</t>
-  </section>
-
   <section title="Security Considerations">
 
     <t>This document does not directly affect the security of the
@@ -1217,17 +1305,20 @@ Low power operation.
 
   </section>
 
+    <section title="IANA Considerations">
+      <t>This document does not require any IANA actions.</t>
+    </section>
 
 
   <section title="Authors and Acknowledgments">
 
     <section title="Authors and Acknowledgments (Current Document)">
 
-      <t>For this version of the IPv6 Node Requirements document, the
+   <t>For this version of the IPv6 Node Requirements document, the
   authors would like to thank 
-
-**BIS Add new acknowledgements for significant comments **
-
+Brian Carpenter
+and
+Dave Thaler
   for their contributions.  </t>
     </section>
 
@@ -1309,10 +1400,18 @@ For this version of the document, the authors
 
     <t>
     <list style='numbers'>
-    <t>Added 6LoWPAN to link layers</t>
-    <t>Removed DOD IPv6 Profile updates</t>
-    <t>Updated to MLDv2</t>
-    <t>Require DNS RA Options</t>
+	<t>Restructured sections</t>
+    	<t>Added 6LoWPAN to link layers.</t>
+    	<t>Removed DOD IPv6 Profile updates.</t>
+    	<t>Updated to state MLDv2 support is a MUST.</t>
+    	<t>Require DNS RA Options, RFC8106 is a MUST.</t>
+    	<t>Added section on constrained devices.</t>
+ 	<t>Added text on RFC7934, address availability to hosts.</t>
+	<t>Added text on RFC7844, anonymity profiles for DHCPv6 clients.</t>
+	<t>mDNS and DNS-SD added.</t>
+	<t>Added RFC8028 as a SHOULD.</t>
+	<t>Added ECN RFC3168 as a SHOULD.</t>
+	<t>Added reference to RFC7123.</t>
     </list>
     </t>
 
@@ -1343,8 +1442,7 @@ For this version of the document, the authors
     recommendation to a SHOULD.</t>
     <t>Upgraded recommendation of DHCPv6 to SHOULD.</t>
     <t>Added background section on DHCP versus RA options, added
-    SHOULD recommendation for DNS configuration via RAs <xref target='RFC6106'
-/>, and cleaned up DHCP recommendations. </t>
+    SHOULD recommendation for DNS configuration via RAs (RFC6106), and cleaned up DHCP recommendations. </t>
 
     <t> Added recommendation that routers implement Sections 7.3 and
 	7.5 of <xref target='RFC6275' />.</t>
@@ -1395,9 +1493,9 @@ and made it a
   <?rfc include="reference.RFC.1981" ?>
   <?rfc include="reference.RFC.2119" ?>
   <?rfc include="reference.RFC.2460" ?>
-  <?rfc include="reference.RFC.2671" ?>
   <?rfc include="reference.RFC.2710" ?>
   <?rfc include="reference.RFC.2711" ?>
+  <?rfc include="reference.RFC.3168" ?>
   <?rfc include="reference.RFC.3315" ?>
   <?rfc include="reference.RFC.3411" ?>
   <?rfc include="reference.RFC.3596" ?>
@@ -1418,7 +1516,6 @@ and made it a
   <?rfc include="reference.RFC.4607" ?>
   <?rfc include="reference.RFC.4861" ?>
   <?rfc include="reference.RFC.4862" ?>
-  <?rfc include="reference.RFC.4835" ?>
   <?rfc include="reference.RFC.4941" ?>
   <?rfc include="reference.RFC.5095" ?>
   <?rfc include="reference.RFC.5453" ?>
@@ -1426,12 +1523,14 @@ and made it a
   <?rfc include="reference.RFC.5790" ?>
   <?rfc include="reference.RFC.5942" ?>
   <?rfc include="reference.RFC.5952" ?>
-  <?rfc include="reference.RFC.5996" ?>
-  <?rfc include="reference.RFC.6106" ?>
   <?rfc include="reference.RFC.6241" ?>
   <?rfc include="reference.RFC.6437" ?>
   <?rfc include="reference.RFC.6564" ?>
   <?rfc include="reference.RFC.6724" ?>
+  <?rfc include="reference.RFC.6762" ?>
+  <?rfc include="reference.RFC.6763" ?>
+  <?rfc include="reference.RFC.6775" ?>
+  <?rfc include="reference.RFC.6891" ?>
   <?rfc include="reference.RFC.6946" ?>
   <?rfc include="reference.RFC.7045" ?>
   <?rfc include="reference.RFC.7048" ?>
@@ -1439,12 +1538,16 @@ and made it a
   <?rfc include="reference.RFC.7217" ?>
   <?rfc include="reference.RFC.7223" ?>
   <?rfc include="reference.RFC.7277" ?>
+  <?rfc include="reference.RFC.7296" ?>
   <?rfc include="reference.RFC.7317" ?>
+  <?rfc include="reference.RFC.7321" ?>
   <?rfc include="reference.RFC.7527" ?>
   <?rfc include="reference.RFC.7559" ?>
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
+  <?rfc include="reference.RFC.8106" ?>
  </references>
+
  <references title="Informative References">
   <?rfc include="reference.RFC.0793" ?>
   <?rfc include="reference.RFC.2205" ?>
@@ -1471,8 +1574,8 @@ and made it a
   <?rfc include="reference.RFC.4821" ?>
   <?rfc include="reference.RFC.4877" ?>
   <?rfc include="reference.RFC.4884" ?>
+  <?rfc include="reference.RFC.4919" ?>
   <?rfc include="reference.RFC.4944" ?>
-  <?rfc include="reference.RFC.5006" ?>
   <?rfc include="reference.RFC.5014" ?>
   <?rfc include="reference.RFC.5072" ?>
   <?rfc include="reference.RFC.5121" ?>
@@ -1480,9 +1583,12 @@ and made it a
   <?rfc include="reference.RFC.6563" ?>
   <?rfc include="reference.RFC.7066" ?>
   <?rfc include="reference.RFC.7084" ?>
+  <?rfc include="reference.RFC.7123" ?>
   <?rfc include="reference.RFC.7278" ?>
   <?rfc include="reference.RFC.7721" ?>
+  <?rfc include="reference.RFC.7844" ?>
   <?rfc include="reference.RFC.7934" ?>
+  <?rfc include="reference.RFC.8028" ?>
   <?rfc include="reference.RFC.8096" ?>
 
 <reference anchor="POSIX"
