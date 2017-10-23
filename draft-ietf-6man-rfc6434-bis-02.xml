@@ -167,7 +167,7 @@
 
   <section title="Description of IPv6 Nodes">
 
-    <t>From the Internet Protocol, Version 6 (IPv6) Specification <xref target='RFC2460' />, we have 
+    <t>From the Internet Protocol, Version 6 (IPv6) Specification <xref target='RFC8200' />, we have 
     the following definitions:</t>
 
 <figure><artwork><![CDATA[
@@ -176,13 +176,6 @@ IPv6 router - a node that forwards IPv6 packets not explicitly
               addressed to itself.
 IPv6 host   - any node that is not a router.
 ]]></artwork></figure>
-
-	<t>
-**BIS We will need to refer to 2460-bis, as well as 1981-bis and
-4291-bis, throughout this document. These are still in flux, but we
-will know the final versions of these documents before this -bis 
-is published, so can adapt text here once those updates are complete.**
-	</t>
 
   </section>
 
@@ -295,18 +288,14 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 
   <section title="IP Layer">
 
-    <section title="Internet Protocol Version 6 - RFC 2460">
+    <section title="Internet Protocol Version 6 - RFC 8200">
 
-      <t>The Internet Protocol Version 6 is specified in <xref target='RFC2460' />.  This specification MUST be supported.</t>
-
-	<t>
-**BIS Again, update for RFC 2460 -bis **
-	</t>
+      <t>The Internet Protocol Version 6 is specified in <xref target='RFC8200' />.  This specification MUST be supported.</t>
 
       <t>Any unrecognized extension headers or options MUST be
-      processed as described in RFC 2460.</t>
+      processed as described in RFC 8200.</t>
 
-      <t>The node MUST follow the packet transmission rules in RFC 2460.</t>
+      <t>The node MUST follow the packet transmission rules in RFC 8200.</t>
 
       <t>Nodes MUST always be able to send, receive, and process
       fragment headers.  All conformant IPv6 implementations MUST be
@@ -344,7 +333,7 @@ uniform distribution.
  
     <section title="Support for IPv6 Extension Headers">
 
-      <t>RFC 2460 specifies extension headers and the processing for
+      <t>RFC 8200 specifies extension headers and the processing for
       these headers.</t>
 
       <t> An IPv6 node MUST be able to process these headers.  An
@@ -367,7 +356,7 @@ uniform distribution.
 	</t>
 
 	<t>
-	As stated in RFC2460,
+	As stated in RFC8200,
 	extension headers (except for the Hop-by-Hop Options header) are not
    processed, inserted, or deleted by any node along a packet's delivery
    path, until the packet reaches the node (or each of the set of nodes,
@@ -511,7 +500,7 @@ The details of how one uses ND on
       <section title="Path MTU Discovery - RFC 1981">
 
         <t> "Path MTU Discovery for IP version 6" <xref target='RFC1981' /> SHOULD be
-	  supported.  From <xref target='RFC2460' />:</t>
+	  supported.  From <xref target='RFC8200' />:</t>
 
         <t><list style='hanging'>
             <t> It is strongly recommended that IPv6 nodes implement
@@ -524,7 +513,7 @@ The details of how one uses ND on
 	    MTU Discovery.</t>
 
         </list></t>
-	<t> The rules in <xref target='RFC2460' /> and
+	<t> The rules in <xref target='RFC8200' /> and
 	  <xref target='RFC5722' /> MUST be followed for packet
 	  fragmentation and reassembly.  </t>
 
@@ -1499,7 +1488,6 @@ and made it a
   <?rfc include="reference.RFC.1035" ?>
   <?rfc include="reference.RFC.1981" ?>
   <?rfc include="reference.RFC.2119" ?>
-  <?rfc include="reference.RFC.2460" ?>
   <?rfc include="reference.RFC.2710" ?>
   <?rfc include="reference.RFC.2711" ?>
   <?rfc include="reference.RFC.3168" ?>
@@ -1553,6 +1541,7 @@ and made it a
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
   <?rfc include="reference.RFC.8106" ?>
+  <?rfc include="reference.RFC.8200" ?>
  </references>
 
  <references title="Informative References">
