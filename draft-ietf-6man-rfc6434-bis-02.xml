@@ -1102,14 +1102,12 @@ Note that
     <t> The current set of mandatory-to-implement algorithms for the
 	IPsec Architecture are defined in "Cryptographic
 	Algorithm Implementation Requirements For ESP and AH"
-	<xref target='RFC7321' />.  IPv6 nodes implementing the IPsec
-	Architecture MUST conform to the requirements in <xref target='RFC7321'/>.
+	<xref target='RFC8221' />.  IPv6 nodes implementing the IPsec
+	Architecture MUST conform to the requirements in <xref target='RFC8221'/>.
 	Preferred cryptographic algorithms often change more
 	frequently than security protocols. Therefore, implementations
-	MUST allow for migration to new algorithms, as RFC 7321 is
+	MUST allow for migration to new algorithms, as RFC 8221 is
 	replaced or updated in the future.</t>
-     <t>**BIS update to 7321bis**
-     </t>
 
      <t> The current set of mandatory-to-implement algorithms for
 	IKEv2 are defined in "Cryptographic Algorithms for Use in the
@@ -1515,7 +1513,6 @@ and made it a
   <?rfc include="reference.RFC.7277" ?>
   <?rfc include="reference.RFC.7296" ?>
   <?rfc include="reference.RFC.7317" ?>
-  <?rfc include="reference.RFC.7321" ?>
   <?rfc include="reference.RFC.7527" ?>
   <?rfc include="reference.RFC.7559" ?>
   <?rfc include="reference.RFC.7739" ?>
@@ -1523,6 +1520,7 @@ and made it a
   <?rfc include="reference.RFC.8106" ?>
   <?rfc include="reference.RFC.8200" ?>
   <?rfc include="reference.RFC.8201" ?>
+  <?rfc include="reference.RFC.8221" ?>
  </references>
 
  <references title="Informative References">
