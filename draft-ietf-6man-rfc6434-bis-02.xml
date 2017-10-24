@@ -497,14 +497,14 @@ The details of how one uses ND on
     </section>
 
     <section title="Path MTU Discovery and Packet Size">
-      <section title="Path MTU Discovery - RFC 1981">
+      <section title="Path MTU Discovery - RFC 8201">
 
-        <t> "Path MTU Discovery for IP version 6" <xref target='RFC1981' /> SHOULD be
+        <t> "Path MTU Discovery for IP version 6" <xref target='RFC8201' /> SHOULD be
 	  supported.  From <xref target='RFC8200' />:</t>
 
         <t><list style='hanging'>
             <t> It is strongly recommended that IPv6 nodes implement
-	    Path MTU Discovery <xref target='RFC1981' />, in order to
+	    Path MTU Discovery <xref target='RFC8201' />, in order to
             discover and 
 	    take advantage of path MTUs greater than 1280 octets.
 	    However, a minimal IPv6 implementation (e.g., in a boot
@@ -1486,7 +1486,6 @@ and made it a
  <references title="Normative References">
   <?rfc include="reference.RFC.1034" ?>
   <?rfc include="reference.RFC.1035" ?>
-  <?rfc include="reference.RFC.1981" ?>
   <?rfc include="reference.RFC.2119" ?>
   <?rfc include="reference.RFC.2710" ?>
   <?rfc include="reference.RFC.2711" ?>
@@ -1542,6 +1541,7 @@ and made it a
   <?rfc include="reference.RFC.8021" ?>
   <?rfc include="reference.RFC.8106" ?>
   <?rfc include="reference.RFC.8200" ?>
+  <?rfc include="reference.RFC.8201" ?>
  </references>
 
  <references title="Informative References">
