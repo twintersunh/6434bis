@@ -533,25 +533,6 @@ The details of how one uses ND on
 
     </section>
 
-    <section title="IPv6 Jumbograms - RFC 2675">
-
-
-     <t> IPv6 Jumbograms <xref target='RFC2675' /> are an optional
-      extension that allow the sending of IP datagrams larger than
-      65,535 bytes.  IPv6 Jumbograms make use of IPv6 hop-by-hop
-      options and are only suitable on paths in which every hop and
-      link are capable of supporting Jumbograms (e.g., within a campus
-      or datacenter). To date, few implementations exist, and there is
-      essentially no reported experience from usage. Consequently,
-      IPv6 Jumbograms <xref target='RFC2675' /> remain optional at
-      this time.</t>
-
-	<t>
-**BIS Are these used?  Do we need to modify the text for that? **
-	</t>
-
-    </section>
-
     <section title="ICMP for the Internet Protocol Version 6 (IPv6) - RFC 4443">
 
       <t>ICMPv6 <xref target='RFC4443' /> MUST be supported. "Extended
@@ -1551,7 +1532,6 @@ and made it a
   <?rfc include="reference.RFC.2491" ?>
   <?rfc include="reference.RFC.2492" ?>
   <?rfc include="reference.RFC.2590" ?>
-  <?rfc include="reference.RFC.2675" ?>
   <?rfc include="reference.RFC.3146" ?>
   <?rfc include="reference.RFC.3363" ?>
   <?rfc include="reference.RFC.3493" ?>
