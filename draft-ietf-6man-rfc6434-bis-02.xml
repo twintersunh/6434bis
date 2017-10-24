@@ -1112,11 +1112,9 @@ Note that
      <t> The current set of mandatory-to-implement algorithms for
 	IKEv2 are defined in "Cryptographic Algorithms for Use in the
 	Internet Key Exchange Version 2 (IKEv2)"
-	<xref target='RFC4307' />.  IPv6 nodes implementing IKEv2 MUST
-	conform to the requirements in <xref target='RFC4307'/> and/or any future
-	updates or replacements to <xref target='RFC4307'/>.
-    </t>
-    <t>**BIS update to 4307bis**
+	<xref target='RFC8247' />.  IPv6 nodes implementing IKEv2 MUST
+	conform to the requirements in <xref target='RFC8247'/> and/or any future
+	updates or replacements to <xref target='RFC8247'/>.
     </t>
 
     </section>      
@@ -1483,7 +1481,6 @@ and made it a
   <?rfc include="reference.RFC.4293" ?>
   <?rfc include="reference.RFC.4301" ?>
   <?rfc include="reference.RFC.4303" ?>
-  <?rfc include="reference.RFC.4307" ?>
   <?rfc include="reference.RFC.4311" ?>
   <?rfc include="reference.RFC.4443" ?>
   <?rfc include="reference.RFC.4607" ?>
@@ -1521,6 +1518,7 @@ and made it a
   <?rfc include="reference.RFC.8200" ?>
   <?rfc include="reference.RFC.8201" ?>
   <?rfc include="reference.RFC.8221" ?>
+  <?rfc include="reference.RFC.8247" ?>
  </references>
 
  <references title="Informative References">
