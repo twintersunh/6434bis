@@ -762,7 +762,9 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
         <t>IPv6 nodes will invariably have multiple addresses configured simultaneously,
 	and thus will need to choose which addresses to use for which communications.
         The rules specified in the Default Address Selection for
-        IPv6 <xref target='RFC6724' /> document MUST be implemented.</t>
+        IPv6 <xref target='RFC6724' /> document MUST be implemented.
+        Since <xref target='RFC8028' /> updates rule 5.5 from <xref target='RFC6724' /> implementations
+        SHOULD implement this rule.</t>
 
 	</section>
 
