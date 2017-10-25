@@ -83,7 +83,7 @@
     </author>
 
 
-    <date month="July" year="2017" />
+    <date month="October" year="2017" />
     <area> Internet </area>
     <workgroup>Internet Engineering Task Force</workgroup>
 
@@ -541,13 +541,8 @@ The details of how one uses ND on
     Advertisements. In some scenarios, one router may provide
     connectivity to destinations the other router does not, and
     choosing the "wrong" default router can result in reachability
-    failures. In such cases, RFC 4191 can help.</t>
-
-    <t> Small Office/Home Office (SOHO) deployments supported by
-    routers adhering to <xref target='RFC7084' /> use
-    RFC 4191  to advertise routes to certain local
-    destinations. Consequently, nodes that will be deployed in SOHO
-    environments SHOULD implement RFC 4191.</t>
+    failures. In order to resolve this scenario IPv6 Nodes MUST implement <xref target='RFC4191' /> 
+    and SHOULD implement Type C host role.</t>
 
     </section>
 
