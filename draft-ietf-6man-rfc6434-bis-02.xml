@@ -846,20 +846,16 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 
   <section title="DHCP Options versus Router Advertisement Options for Host Configuration">
 
-	<t>**BIS needs rewriting </t>
-
       <t> In IPv6, there are two main protocol mechanisms for
       propagating configuration information to hosts: Router
-      Advertisements (RAs) and DHCP. Historically, RA options have been
+      Advertisements (RAs) and DHCP. RA options have been
       restricted to those deemed essential for basic network
       functioning and for which all nodes are configured with exactly
       the same information.  Examples include the Prefix Information
       Options, the MTU option, etc. On the other hand, DHCP has
       generally been preferred for configuration of more general
-      parameters and for parameters that may be client-specific. That
-      said, identifying the exact line on whether a particular option
-      should be configured via DHCP versus an RA option has not always
-      been easy. Generally speaking, however, there has been a desire
+      parameters and for parameters that may be client-specific. 
+      Generally speaking, however, there has been a desire
       to define only one mechanism for configuring a given option,
       rather than defining multiple (different) ways of configuring
       the same information.</t>
