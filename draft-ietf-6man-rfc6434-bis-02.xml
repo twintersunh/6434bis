@@ -633,10 +633,9 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
    	hosts with multiple global IPv6 addresses when they attach, and it
    	describes the benefits of and the options for doing so.  There are, for example,
 	benefits to multiple addresses for privacy reasons, or to assigning hosts a
-	whole /64 to avoid the need for host-based NAT.
-	</t>
-	<t>
-	**BIS could add a reference to draft-ietf-v6ops-unique-ipv6-prefix-per-host-06 as a BCP?
+	whole /64 to avoid the need for host-based NAT.  The practice of assigning a prefix
+        to a host is documented in <xref target="I-D.ietf-v6ops-unique-ipv6-prefix-per-host">
+        Unique IPv6 Prefix Per Host</xref>
 	</t>
 	</section>
 
@@ -1006,7 +1005,8 @@ Interface (POSIX) <xref target='POSIX' />.</t>
     standards such as <xref target='RFC4877' /> are considered a MAY
     at this time.</t>
 
-    <t> IPv6 for 3GPP <xref target='RFC7066'/> lists IPv6 Functionalities that need to be implemented above
+    <t> IPv6 for 3GPP <xref target='RFC7066'/> lists IPv6 Functionalities at the time that would 
+       need to be implemented going above
        and beyond the recommendations in this document. Additionally a 3GPP IPv6 Host MAY implement
        <xref target='RFC7278' /> for delivering IPv6 prefixes on the LAN link.</t>
 
@@ -1506,6 +1506,7 @@ and made it a
  </references>
 
  <references title="Informative References">
+  <?rfc include="reference.I-D.draft-ietf-v6ops-unique-ipv6-prefix-per-host-13.xml" ?>
   <?rfc include="reference.RFC.0793" ?>
   <?rfc include="reference.RFC.2205" ?>
   <?rfc include="reference.RFC.2464" ?>
