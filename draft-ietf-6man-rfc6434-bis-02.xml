@@ -280,10 +280,6 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 
     </t>
 
-	<t>
-**BIS Do we want a small section somewhere on UDP IPv6 tunneling, and issues like RFC 6935, or 6936?**
-	</t>
-    
   </section>
 
   <section title="IP Layer">
@@ -525,10 +521,6 @@ The details of how one uses ND on
 	dependency on Packet Too Big messages.
     </t>
 
-	<t>
-**BIS Add note about 1280 MTU and UDP, as per Mark Andrews' comments in Berlin? **
-	</t>
-
       </section>
 
     </section>
@@ -625,11 +617,8 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
         <t>The IPv6 Addressing Architecture <xref target='RFC4291' />
         MUST be supported.</t> 
 
-	<t>
-**BIS Add note on Why /64?  RFC 7421, after the conclusion of the RFC4291-bis (lengthy!!!) discussions
-on the 64-bit IID topic.
-But no need for /127 p2p text RFC 6164. 
-And no need for note on IID significance, as per RFC 7136. **
+	<t>The current IPv6 Address Architecture is based on 64-bit boundry for subnet prefixes.  
+        The reasoning behind this decision is documented in <xref target='RFC7421'/>.
 	</t>
 
     </section>
@@ -1552,6 +1541,7 @@ and made it a
   <?rfc include="reference.RFC.7084" ?>
   <?rfc include="reference.RFC.7123" ?>
   <?rfc include="reference.RFC.7278" ?>
+  <?rfc include="reference.RFC.7421" ?>
   <?rfc include="reference.RFC.7721" ?>
   <?rfc include="reference.RFC.7772" ?>
   <?rfc include="reference.RFC.7844" ?>
