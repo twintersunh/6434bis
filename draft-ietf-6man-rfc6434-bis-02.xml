@@ -233,10 +233,6 @@ It is provided for informational purposes only and may
 	  <t hangText="-"> Transmission of IPv6 Packets over Ethernet
 	  Networks <xref target='RFC2464' /></t>
 	  
-	  <t hangText="-"> IPv6 over ATM Networks
-	  <xref target='RFC2492' /></t>
-	  
-	  
 	  <t hangText="-"> Transmission of IPv6 Packets over Frame
 	  Relay Networks Specification <xref target='RFC2590' /></t>
 	  
@@ -1508,7 +1504,6 @@ and made it a
   <?rfc include="reference.RFC.2205" ?>
   <?rfc include="reference.RFC.2464" ?>
   <?rfc include="reference.RFC.2491" ?>
-  <?rfc include="reference.RFC.2492" ?>
   <?rfc include="reference.RFC.2590" ?>
   <?rfc include="reference.RFC.3146" ?>
   <?rfc include="reference.RFC.3363" ?>
