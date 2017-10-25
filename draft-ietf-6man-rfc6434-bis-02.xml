@@ -626,10 +626,6 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
         MUST be supported.</t> 
 
 	<t>
-**BIS Update to 4291-bis **
-	</t>
-	
-	<t>
 **BIS Add note on Why /64?  RFC 7421, after the conclusion of the RFC4291-bis (lengthy!!!) discussions
 on the 64-bit IID topic.
 But no need for /127 p2p text RFC 6164. 
@@ -1208,10 +1204,9 @@ Note that
 	and ND optimisations for that medium <xref target='RFC6775' />.
 	</t>
 
-	<t>
-**BIS What else to say here?
-Talk about resource management in nodes?
-Low power operation?
+	<t> 
+        If an IPv6 node is concerned about impact of IPv6 messages power consumption 
+        MAY want to implement the recommendations in <xref target='RFC7772' />.
 	</t>
 
   </section>
@@ -1558,6 +1553,7 @@ and made it a
   <?rfc include="reference.RFC.7123" ?>
   <?rfc include="reference.RFC.7278" ?>
   <?rfc include="reference.RFC.7721" ?>
+  <?rfc include="reference.RFC.7772" ?>
   <?rfc include="reference.RFC.7844" ?>
   <?rfc include="reference.RFC.7934" ?>
   <?rfc include="reference.RFC.8028" ?>
