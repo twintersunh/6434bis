@@ -1262,9 +1262,7 @@ support a Simple Network Management Protocol (SNMP) agent.</t>
 
    <t>For this version of the IPv6 Node Requirements document, the
   authors would like to thank 
-Brian Carpenter
-and
-Dave Thaler
+Brian Carpenter,Dave Thaler, Erik Kline, Mohamed Boucadair, and Michayla Newcombe.
   for their contributions.  </t>
     </section>
 
@@ -1358,6 +1356,19 @@ For this version of the document, the authors
 	<t>Added RFC8028 as a SHOULD.</t>
 	<t>Added ECN RFC3168 as a SHOULD.</t>
 	<t>Added reference to RFC7123.</t>
+	<t>Removed Jumbograms RFC2675.</t>
+	<t>Updated RFC2460 to 8200.</t>
+	<t>Updated RFC1981 to 8201.</t>
+	<t>Updated RFC1981 to 8201.</t>
+	<t>Updated RFC7321 to 8221.</t>
+	<t>Updated RFC4307 to 8247.</t>
+	<t>Added RFC7772 for power comsumptions</t>
+        <t>Added why /64 boundries</t>
+        <t>Added a Unique IPv6 PRefix per Host</t>
+        <t>Clarified RFC7066 was snapshot for 3GPP</t>
+        <t>Updated 4191 as a MUST, SHOULD for Type C Host.</t>
+        <t>Removed IPv6 over ATM</t>
+        <t>Added a note in Section 6.6 for RFC6724 Section 5.5/</t>
     </list>
     </t>
 
