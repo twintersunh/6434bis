@@ -622,12 +622,13 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<t>
 	<xref target='RFC7934'/> recommends that networks provide general-purpose end
    	hosts with multiple global IPv6 addresses when they attach, and it
-   	describes the benefits of and the options for doing so.  There are, for example,
-	benefits to multiple addresses for privacy reasons, or to assigning hosts a
-	whole /64 to avoid the need for host-based NAT.  The practice of assigning a prefix
-        to a host is documented in <xref target="I-D.ietf-v6ops-unique-ipv6-prefix-per-host">
-        Unique IPv6 Prefix Per Host</xref>
+   	describes the benefits of and the options for doing so.  
 	</t>
+	<t>Nodes SHOULD support the capability to be assigned a prefix per host as
+        documented in <xref target="I-D.ietf-v6ops-unique-ipv6-prefix-per-host">
+        Unique IPv6 Prefix Per Host</xref>. Such an approach can offer improved host
+        isolation and enhanced subscriber management on shared network segments.
+        </t>
 	</section>
 
       <section title="IPv6 Stateless Address Autoconfiguration - RFC 4862">
@@ -1518,6 +1519,7 @@ and made it a
   <?rfc include="reference.RFC.7608" ?>
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
+  <?rfc include="reference.RFC.8028" ?>
   <?rfc include="reference.RFC.8064" ?>
   <?rfc include="reference.RFC.8106" ?>
   <?rfc include="reference.RFC.8200" ?>
@@ -1568,7 +1570,6 @@ and made it a
   <?rfc include="reference.RFC.7772" ?>
   <?rfc include="reference.RFC.7844" ?>
   <?rfc include="reference.RFC.7934" ?>
-  <?rfc include="reference.RFC.8028" ?>
   <?rfc include="reference.RFC.8096" ?>
 
 <reference anchor="POSIX"
