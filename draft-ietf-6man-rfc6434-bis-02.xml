@@ -543,6 +543,7 @@ The details of how one uses ND on
     </section>
 
     <section title="Path MTU Discovery and Packet Size">
+
       <section title="Path MTU Discovery - RFC 8201">
 
         <t> "Path MTU Discovery for IP version 6" <xref target='RFC8201' /> SHOULD be
@@ -570,6 +571,17 @@ The details of how one uses ND on
 	MTU Discovery" <xref target='RFC4821' /> avoids having a
 	dependency on Packet Too Big messages.
     </t>
+
+      </section>
+
+      <section title="Minimum MTU considerations">
+	<t>
+	While an IPv6 link MTU can be set to 1280 bytes, for
+	IPv6 UDP in particular, which includes DNS operation, 
+	it is recommended that the sender use a 
+	large MTU if they can, in order to avoid gratuitous 
+	fragmentation-caused packet drops.
+	</t>
 
       </section>
 
@@ -1445,6 +1457,7 @@ For this version of the document, the authors
 	<t>Added reference to RFC8064</t>
 	<t>Made RFC8028 normative</t>
 	<t>Added text on protection from excessive EH options</t>
+	<t>Added text on dangers of 1280 MTU UDP, esp. wrt DNS traffic</t>
     </list>
     </t>
 
@@ -1660,4 +1673,3 @@ and made it a
  </references>
 </back>
 </rfc>
-
