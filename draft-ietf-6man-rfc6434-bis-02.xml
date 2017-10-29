@@ -749,7 +749,9 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<t>Where devices are likely to be carried by users and attached
 	to multiple visisted networks, DHCPv6 client
 	anonymity profiles SHOULD be supported as described in <xref target='RFC7844' /> 
-	to minimise the discolosure of identifying information.</t>
+	to minimise the discolosure of identifying information. 
+	Section 5 of RFC7844 describes operational considerations on the use of 
+	such anonymity profiles.</t>
 	
         </section> 
 
@@ -1099,12 +1101,13 @@ Note that
 
     <t>This section defines general host considerations for IPv6 nodes
     that act as routers.  Currently, this section does not discuss
-    routing-specific requirements; for the case of typical home routers,
+    detailed routing-specific requirements; for the case of typical home routers,
 	<xref target='RFC7084'/> defines basic requirements for customer edge routers.
 	</t>
 
 	<t>
-**BIS Sync here with work by John Brzozowski et al. in draft-ali-ipv6rtr-reqs-02**
+	Further recommendations on router-specific functionality can be found
+	in <xref target="I-D.ietf-v6ops-ipv6rtr-reqs" />.
 	</t>
 
       <section title="IPv6 Router Alert Option - RFC 2711">
@@ -1163,6 +1166,17 @@ Note that
 	server function in IPv6 Customer Edge (CE) routers. </t>
 
       </section>
+
+      <section title="IPv6 Prefix Length Recommendation for Forwarding - BCP 198">
+
+	<t>
+	Forwarding nodes MUST conform to BCP 198 <xref target='RFC7608' />
+	and thus IPv6 implementations of nodes that may forward packets 
+	MUST conform to the rules specified in Section 5.1 of <xref target='RFC4632' />.
+	</t>
+
+      </section>
+
     </section>
 
   <section title="Constrained Devices">
@@ -1370,6 +1384,7 @@ For this version of the document, the authors
         <t>Updated 4191 as a MUST, SHOULD for Type C Host.</t>
         <t>Removed IPv6 over ATM</t>
         <t>Added a note in Section 6.6 for RFC6724 Section 5.5/</t>
+	<t>Added MUST for BCP 198</t>
     </list>
     </t>
 
@@ -1469,6 +1484,7 @@ and made it a
   <?rfc include="reference.RFC.4311" ?>
   <?rfc include="reference.RFC.4443" ?>
   <?rfc include="reference.RFC.4607" ?>
+  <?rfc include="reference.RFC.4632" ?>
   <?rfc include="reference.RFC.4861" ?>
   <?rfc include="reference.RFC.4862" ?>
   <?rfc include="reference.RFC.4941" ?>
@@ -1497,6 +1513,7 @@ and made it a
   <?rfc include="reference.RFC.7317" ?>
   <?rfc include="reference.RFC.7527" ?>
   <?rfc include="reference.RFC.7559" ?>
+  <?rfc include="reference.RFC.7608" ?>
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
   <?rfc include="reference.RFC.8106" ?>
@@ -1508,6 +1525,7 @@ and made it a
 
  <references title="Informative References">
   <?rfc include="reference.I-D.draft-ietf-v6ops-unique-ipv6-prefix-per-host-13.xml" ?>
+  <?rfc include="reference.I-D.draft-ietf-v6ops-ipv6rtr-reqs-00.xml" ?>
   <?rfc include="reference.RFC.0793" ?>
   <?rfc include="reference.RFC.2205" ?>
   <?rfc include="reference.RFC.2464" ?>
