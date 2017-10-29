@@ -608,7 +608,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
         <t>The IPv6 Addressing Architecture <xref target='RFC4291' />
         MUST be supported.</t> 
 
-	<t>The current IPv6 Address Architecture is based on 64-bit boundry for subnet prefixes.  
+	<t>The current IPv6 Address Architecture is based on a 64-bit boundary for subnet prefixes.  
         The reasoning behind this decision is documented in <xref target='RFC7421'/>.
 	</t>
 
@@ -994,8 +994,9 @@ Interface (POSIX) <xref target='POSIX' />.</t>
     standards such as <xref target='RFC4877' /> are considered a MAY
     at this time.</t>
 
-    <t> IPv6 for 3GPP <xref target='RFC7066'/> lists IPv6 Functionalities at the time that would 
-       need to be implemented going above
+    <t> IPv6 for 3GPP <xref target='RFC7066'/> lists a snapshot of required 
+	IPv6 Functionalities at the time the document was published that would 
+       need to be implemented, going above
        and beyond the recommendations in this document. Additionally a 3GPP IPv6 Host MAY implement
        <xref target='RFC7278' /> for delivering IPv6 prefixes on the LAN link.</t>
 
@@ -1183,7 +1184,7 @@ Note that
 	</t>
 
 	<t> 
-        If an IPv6 node is concerned about impact of IPv6 messages power consumption 
+        If an IPv6 node is concerned about the impact of IPv6 message power consumption, it
         MAY want to implement the recommendations in <xref target='RFC7772' />.
 	</t>
 
