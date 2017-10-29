@@ -362,10 +362,64 @@ uniform distribution.
 	4 of <xref target='RFC6564'/>. 
 	</t>
 
-	<t>
-** BIS add text on host side processing of IPv6 EHs.  
-	From list discussion about protecting receiver from excessive EH options/pads/etc.
-	</t>
+    </section>
+
+    <section title="Protecting a node from excessive EH options">
+
+<t>
+Per RFC 8200, end hosts are expected to process all extension headers,
+destination options, and hop-by-hop options in a packet. Given that
+the only limit on the number and size of extension headers is the MTU,
+the processing of received packets could be considerable. It is also
+conceivable that a long chain of extension headers might be used as a
+form of denial-of-service attack. Accordingly, a host may place limits
+on the number and sizes of extension headers and options it is willing
+to process.
+</t>
+
+<t>
+A host MAY limit the number of consecutive PAD1 options in destination
+options or hop-by-hop options to seven. In this case, if the more than
+seven consecutive PAD1 options are present the the packet should be
+silently discarded. The rationale is that if padding of eight or more
+bytes is required than the PADN option should be used.
+</t>
+
+<t>
+A host MAY limit number of bytes in a PADN option to be less than
+eight. In such a case, if a PADN option is present that has a length
+greater than seven then the packet should be silently discarded. The
+rationale for this guideline is that the purpose of padding is for
+alignment and eight bytes is the maximum alignment used in IPv6.
+</t>
+
+<t>
+A host MAY disallow unknown options in destination options or
+hob-by-hop options. This should be configurable where the default is
+to accept unknown options and process them per RFC2460. If a packet
+with unknown options is received and the host is configured to
+disallow them, then the packet should be silently discarded.
+</t>
+
+<t>
+A host MAY impose a limit on the maximum number of non-padding options
+allowed in a destination options  and hop-by-hop extension headers. If
+this feature is supported the maximum number should be configurable
+and the default value SHOULD be set to eight. The limits for
+destination options and hop-by-hop options may be separately
+configurable. If a packet is received and the number of destination or
+hop-by-hop optines exceeds the limit, then the packet should be
+silently discarded.
+</t>
+
+<t>
+A host MAY impose a limit on the maximum length of destination options
+or hop-by-hop options extension header. This value should be
+configurable and the default is to accept options of any length. If a
+packet is received and the length of destination or hop-by-hop options
+extension header exceeds the length limit, then the packet should be
+silently discarded.
+</t>
 
     </section>
 
@@ -1278,7 +1332,8 @@ support a Simple Network Management Protocol (SNMP) agent.</t>
 
    <t>For this version of the IPv6 Node Requirements document, the
   authors would like to thank 
-Brian Carpenter,Dave Thaler, Erik Kline, Mohamed Boucadair, and Michayla Newcombe.
+Brian Carpenter, Dave Thaler, 
+Tom Herbert, Erik Kline, Mohamed Boucadair, and Michayla Newcombe
   for their contributions.  </t>
     </section>
 
@@ -1379,15 +1434,17 @@ For this version of the document, the authors
 	<t>Updated RFC7321 to 8221.</t>
 	<t>Updated RFC4307 to 8247.</t>
 	<t>Added RFC7772 for power comsumptions</t>
-        <t>Added why /64 boundries</t>
+        <t>Added why /64 boundries - RFC 7421</t>
         <t>Added a Unique IPv6 PRefix per Host</t>
         <t>Clarified RFC7066 was snapshot for 3GPP</t>
         <t>Updated 4191 as a MUST, SHOULD for Type C Host.</t>
         <t>Removed IPv6 over ATM</t>
         <t>Added a note in Section 6.6 for RFC6724 Section 5.5/</t>
 	<t>Added MUST for BCP 198</t>
-	<t>Added reference to draft-ietf-v6ops-ipv6rtr-reqs-00</t>
+	<t>Added reference to draft-ietf-v6ops-ipv6rtr-reqs</t>
 	<t>Added reference to RFC8064</t>
+	<t>Made RFC8028 normative</t>
+	<t>Added text on protection from excessive EH options</t>
     </list>
     </t>
 
@@ -1603,3 +1660,4 @@ and made it a
  </references>
 </back>
 </rfc>
+
