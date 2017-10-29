@@ -632,12 +632,12 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 
       <section title="IPv6 Stateless Address Autoconfiguration - RFC 4862">
  
-        <t>Hosts MUST support IPv6 Stateless Address Autoconfiguration
-        as defined in either <xref target='RFC4862' /> or 
-	<xref target='RFC7217'/>. It is recommended that, unless there
+        <t>Hosts MUST support IPv6 Stateless Address Autoconfiguration.
+	It is recommended, as described in <xref target='RFC8064'/>, that unless there
 	is a specific requirement for MAC addresses to be embedded in
-	an IID, nodes follow the procedure in RFC7217 to generate SLAAC-based
-	addresses. Addresses generated through RFC7217 will be the same
+	an IID, nodes follow the procedure in <xref target='RFC7217'/> to generate SLAAC-based
+	addresses, rather than using <xref target='RFC4862' />. 
+	Addresses generated through RFC7217 will be the same
 	whenever a given device (re)appears on the same subnet (with a 
 	specific IPv6 prefix), but the IID will vary on each subnet visited.
 	</t>
@@ -1385,6 +1385,8 @@ For this version of the document, the authors
         <t>Removed IPv6 over ATM</t>
         <t>Added a note in Section 6.6 for RFC6724 Section 5.5/</t>
 	<t>Added MUST for BCP 198</t>
+	<t>Added reference to draft-ietf-v6ops-ipv6rtr-reqs-00</t>
+	<t>Added reference to RFC8064</t>
     </list>
     </t>
 
@@ -1516,6 +1518,7 @@ and made it a
   <?rfc include="reference.RFC.7608" ?>
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
+  <?rfc include="reference.RFC.8064" ?>
   <?rfc include="reference.RFC.8106" ?>
   <?rfc include="reference.RFC.8200" ?>
   <?rfc include="reference.RFC.8201" ?>
