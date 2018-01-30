@@ -284,15 +284,13 @@ Hosts and Routers"  <xref target='RFC4213' /></t>
 
       <t>The Internet Protocol Version 6 is specified in <xref target='RFC8200' />.  This specification MUST be supported.</t>
 
-      <t>Any unrecognized extension headers or options MUST be
-      processed as described in RFC 8200.</t>
-
       <t>The node MUST follow the packet transmission rules in RFC 8200.</t>
 
-      <t>Nodes MUST always be able to send, receive, and process
-      fragment headers.  All conformant IPv6 implementations MUST be
-      capable of sending and receiving IPv6 packets; the forwarding
-      functionality MAY be supported. Overlapping fragments MUST be
+      <t>All conformant IPv6 implementations MUST be
+      capable of sending and receiving IPv6 packets; forwarding
+      functionality MAY be supported. 
+	Nodes MUST always be able to send, receive, and process
+      fragment headers.  Overlapping fragments MUST be
       handled as described in <xref target='RFC5722' />. </t>
 
 	<t>
@@ -328,6 +326,14 @@ uniform distribution.
       <t>RFC 8200 specifies extension headers and the processing for
       these headers.</t>
 
+      <t>Any unrecognized extension headers or options MUST be
+      processed as described in RFC 8200. Note that where 
+	Section 4 of RFC 8200
+	refers to the action to be taken when a Next Header value 
+	in the current header is not recognized by a node, that action
+	applies whether the value is an unrecognized Extension
+	Header or an unrecognized upper layer protocol (ULP).  </t>
+
       <t> An IPv6 node MUST be able to process these headers.  An
 	exception is Routing Header type 0 (RH0), which was deprecated
 	by <xref target='RFC5095' /> due to security concerns and
@@ -357,9 +363,9 @@ uniform distribution.
 	</t>
 
 	<t>
-	Should a new type of Extension Header need to be defined, 
-	its format MUST follow the consistent format described in Section
-	4 of <xref target='RFC6564'/>. 
+	It should be noted that when future, new Extension Headers are
+	defined, the consistent format described in Section
+	4 of <xref target='RFC6564'/> MUST be followed. 
 	</t>
 
     </section>
@@ -395,8 +401,9 @@ alignment and eight bytes is the maximum alignment used in IPv6.
 
 <t>
 A host MAY disallow unknown options in destination options or
-hob-by-hop options. This should be configurable where the default is
-to accept unknown options and process them per RFC2460. If a packet
+hop-by-hop options. This should be configurable where the default is
+to accept unknown options and process them per 
+<xref target='RFC8200' />. If a packet
 with unknown options is received and the host is configured to
 disallow them, then the packet should be silently discarded.
 </t>
@@ -508,9 +515,7 @@ The details of how one uses ND on
 	secure the message exchanges of Neighbor Discovery. SEND 
 	has the potential to address certain classes of spoofing
 	attacks, but it does not provide specific protection for threats
-	from off-link attackers. It requires relatively heavyweight
-	provisioning, so is only likely to be used in scenarios
-	where security considerations are particularly important.
+	from off-link attackers. 
 	</t>
 	<t>
 	There have been relatively few implementations of SEND 
@@ -519,7 +524,8 @@ The details of how one uses ND on
 	</t>
 
       <t>At this time, SEND is considered optional. Due to the
-	complexity in deploying SEND, its deployment is only
+	complexity in deploying SEND, and its heavyweight provisioning,
+	its deployment is only
 	likely to be considered where nodes are operating in a
 	particularly strict security environment.</t>
 
@@ -564,7 +570,8 @@ The details of how one uses ND on
 	  <xref target='RFC5722' /> MUST be followed for packet
 	  fragmentation and reassembly.  </t>
 
-	<t> One operational issue with Path MTU Discovery occurs when
+	<t> One operational issue with Path MTU Discovery occurs when,
+	contrary to the guidance in <xref target='RFC4890' />,
 	firewalls block ICMP Packet Too Big messages. Path MTU
 	Discovery relies on such messages to determine what size
 	messages can be successfully sent. "Packetization Layer Path
@@ -576,9 +583,9 @@ The details of how one uses ND on
 
       <section title="Minimum MTU considerations">
 	<t>
-	While an IPv6 link MTU can be set to 1280 bytes, for
-	IPv6 UDP in particular, which includes DNS operation, 
-	it is recommended that the sender use a 
+	While an IPv6 link MTU can be set to 1280 bytes, 
+	it is recommended that for IPv6 UDP in particular, 
+	which includes DNS operation, the sender use a 
 	large MTU if they can, in order to avoid gratuitous 
 	fragmentation-caused packet drops.
 	</t>
@@ -604,7 +611,7 @@ The details of how one uses ND on
     connectivity to destinations the other router does not, and
     choosing the "wrong" default router can result in reachability
     failures. In order to resolve this scenario IPv6 Nodes MUST implement <xref target='RFC4191' /> 
-    and SHOULD implement Type C host role.</t>
+    and SHOULD implement the Type C host role defined in RFC4191.</t>
 
     </section>
 
@@ -631,7 +638,8 @@ The details of how one uses ND on
 	per <xref target='RFC4607' />.
 	</t>
 
-      <t> Previous version of this document only required MLDv1 to be implemented 
+      <t> Previous versions of this document only required MLDv1 
+	(<xref target='RFC2710' />) to be implemented 
       on all nodes.  Since participation of any
       MLDv1-only nodes on a link require that all other nodeas on the link then
       operate in version 1 compatibility mode, the requirement to support MLDv2
@@ -649,19 +657,16 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<section title="Explicit Congestion Notification (ECN) - RFC 3168">
 
 	<t>
-	An ECN-aware router may set a mark in the IP header instead of dropping a 
-	packet in order to signal impending congestion. The receiver of 
+	An ECN-aware router may set a mark in the IP header in order to signal 
+	impending congestion, rather than dropping a packet. The receiver of 
 	the packet echoes the congestion indication to the sender, which can then
 	reduce its transmission rate as if it detected a dropped packet.
 	</t>
 
 	<t>Nodes that may be deployed in environments where they would benefit
 	from such early congestion notification SHOULD implement 
-	<xref target='RFC3168' />.
-	</t>
-
-	<t>
-	** BIS -  Need to update to RFC for draft-ietf-tsvwg-ecn-experimentation-08, obseletes RFC3168
+	<xref target='RFC3168' />. In such cases, the updates presented in
+	<xref target='RFC8311' /> may also be relevant.
 	</t>
 
 	</section>
@@ -691,8 +696,8 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
    	describes the benefits of and the options for doing so.  
 	</t>
 	<t>Nodes SHOULD support the capability to be assigned a prefix per host as
-        documented in <xref target="I-D.ietf-v6ops-unique-ipv6-prefix-per-host">
-        Unique IPv6 Prefix Per Host</xref>. Such an approach can offer improved host
+        documented in <xref target='RFC8273' />.
+        Such an approach can offer improved host
         isolation and enhanced subscriber management on shared network segments.
         </t>
 	</section>
@@ -800,22 +805,22 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 
          <t> DHCPv6 <xref target='RFC3315' /> can be used to obtain and
  	configure addresses. In general, a network may provide for the
- 	configuration of addresses through Router Advertisements,
+ 	configuration of addresses through SLAAC,
  	DHCPv6, or both.  There will be a wide range of IPv6 deployment
  	models and differences in address assignment requirements,
  	some of which may require DHCPv6 for stateful address assignment.
  	Consequently, all hosts SHOULD implement address configuration
  	via DHCPv6.</t>
   
-        <t> In the absence of a router, IPv6 nodes using DHCP for
-	address assignment MAY initiate DHCP to obtain IPv6 addresses
+        <t> In the absence of observed Router Advertisement messages, IPv6 nodes 
+	MAY initiate DHCP to obtain IPv6 addresses
 	and other configuration information, as described in Section
 	5.5.2 of <xref target='RFC4862' />.</t>
 
 	<t>Where devices are likely to be carried by users and attached
 	to multiple visisted networks, DHCPv6 client
 	anonymity profiles SHOULD be supported as described in <xref target='RFC7844' /> 
-	to minimise the discolosure of identifying information. 
+	to minimise the disclosure of identifying information. 
 	Section 5 of RFC7844 describes operational considerations on the use of 
 	such anonymity profiles.</t>
 	
@@ -827,7 +832,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	and thus will need to choose which addresses to use for which communications.
         The rules specified in the Default Address Selection for
         IPv6 <xref target='RFC6724' /> document MUST be implemented.
-        Since <xref target='RFC8028' /> updates rule 5.5 from <xref target='RFC6724' /> implementations
+        <xref target='RFC8028' /> updates rule 5.5 from <xref target='RFC6724' />; implementations
         SHOULD implement this rule.</t>
 
 	</section>
@@ -866,7 +871,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 
       <section title="DHCP for Other Configuration Information">
 
-      <t>IPv6 nodes use DHCP <xref target='RFC3315' /> to obtain
+      <t>DHCP <xref target='RFC3315' /> Specifies a mechanism for IPv6 nodes to obtain
          address configuration information (see <xref target="stateful1" />) and to
          obtain additional (non-address) configuration.  If a host
          implementation supports applications or other protocols that
@@ -896,8 +901,8 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
     <section title="IPv6 Router Advertisement Options for DNS
         Configuration - RFC 8106">
 
-        <t>Router Advertisements have historically limited options to
-        those that are critical to basic IPv6 functioning. Originally,
+        <t>Router Advertisement Options have historically been limited to
+        those that are critical to basic IPv6 functionality. Originally,
         DNS configuration was not included as an RA option, and DHCP
         was the recommended way to obtain DNS configuration
         information. Over time, the thinking surrounding such an
@@ -1172,7 +1177,7 @@ Note that
 
     <t>This section defines general host considerations for IPv6 nodes
     that act as routers.  Currently, this section does not discuss
-    detailed routing-specific requirements; for the case of typical home routers,
+    detailed routing-specific requirements. For the case of typical home routers,
 	<xref target='RFC7084'/> defines basic requirements for customer edge routers.
 	</t>
 
@@ -1186,9 +1191,9 @@ Note that
         <t>The IPv6 Router Alert Option <xref target='RFC2711' /> is
         an optional IPv6 Hop-by-Hop Header that is used in conjunction
         with some protocols (e.g., RSVP <xref target='RFC2205' /> or
-        Multicast Listener Discovery (MLD) <xref target='RFC2710' />).  The Router Alert option will
-        need to be implemented whenever protocols that mandate its
-        usage (e.g., MLD) are implemented.  See <xref target="mld" />.</t>
+        Multicast Listener Discovery (MLDv2) <xref target='RFC3810' />).  The Router Alert option will
+        need to be implemented whenever such protocols that mandate its
+        use are implemented.  See <xref target="mld" />.</t>
 
       </section>
 
@@ -1218,7 +1223,7 @@ Note that
 	either a single LAN or multiple LANs attached to the single
 	router, together with a WAN connection, a DHCP server
 	embedded within the router is one common deployment scenario
-	(e.g., <xref target='RFC7084' />). However, there is no need
+	(e.g., <xref target='RFC7084' />). There is no need
 	for relay agents in such scenarios.  </t>
 
 	<t> In more complex deployment scenarios, such as within
@@ -1287,8 +1292,8 @@ Note that
     <section title="Management Information Base (MIB) Modules">
 
       <t>
-      IPv6 MIB have been updated since the last release of the document, <xref target='RFC8096' />
-      obseletes several MIBs, the nodes need to not support any longer.
+      IPv6 MIBs have been updated since the last release of the document; <xref target='RFC8096' />
+      obseletes several MIBs, which nodes need no longer support.
       </t>
       <t>The following two MIB modules SHOULD be supported by nodes that
 support a Simple Network Management Protocol (SNMP) agent.</t>
@@ -1441,7 +1446,8 @@ For this version of the document, the authors
 	<t>Added text on RFC7844, anonymity profiles for DHCPv6 clients.</t>
 	<t>mDNS and DNS-SD added as updated service discovery.</t>
 	<t>Added RFC8028 as a SHOULD as a method for solving multi-prefix network</t>
-	<t>Added ECN RFC3168 as a SHOULD, since recent reports have shown this as useful.</t>
+	<t>Added ECN RFC3168 as a SHOULD, since recent reports have shown this as useful,
+	and added a note on RFC8311, which is related.</t>
 	<t>Added reference to RFC7123 for Security over IPv4-only networks</t>
 	<t>Removed Jumbograms RFC2675 as they aren't deployed.</t>
     <t>Updated Obseleted RFCs to the new version of the RFC including 2460, 1981, 7321, 4307</t>
@@ -1457,6 +1463,7 @@ For this version of the document, the authors
 	<t>Added reference to RFC8064 for stable address creation.</t>
 	<t>Added text on protection from excessive EH options</t>
 	<t>Added text on dangers of 1280 MTU UDP, esp. wrt DNS traffic</t>
+	<t>Added text to clarify RFC8200 behaviour for unrecognized EHs or unrecognized ULPs</t>
     </list>
     </t>
 
@@ -1595,11 +1602,11 @@ and made it a
   <?rfc include="reference.RFC.8201" ?>
   <?rfc include="reference.RFC.8221" ?>
   <?rfc include="reference.RFC.8247" ?>
+  <?rfc include="reference.RFC.8311" ?>
  </references>
 
  <references title="Informative References">
-  <?rfc include="reference.I-D.draft-ietf-v6ops-unique-ipv6-prefix-per-host-13.xml" ?>
-  <?rfc include="reference.I-D.draft-ietf-v6ops-ipv6rtr-reqs-00.xml" ?>
+  <?rfc include="reference.I-D.draft-ietf-v6ops-ipv6rtr-reqs-01.xml" ?>
   <?rfc include="reference.RFC.0793" ?>
   <?rfc include="reference.RFC.2205" ?>
   <?rfc include="reference.RFC.2464" ?>
@@ -1623,6 +1630,7 @@ and made it a
   <?rfc include="reference.RFC.4821" ?>
   <?rfc include="reference.RFC.4877" ?>
   <?rfc include="reference.RFC.4884" ?>
+  <?rfc include="reference.RFC.4890" ?>
   <?rfc include="reference.RFC.4919" ?>
   <?rfc include="reference.RFC.4944" ?>
   <?rfc include="reference.RFC.5014" ?>
@@ -1640,6 +1648,7 @@ and made it a
   <?rfc include="reference.RFC.7844" ?>
   <?rfc include="reference.RFC.7934" ?>
   <?rfc include="reference.RFC.8096" ?>
+  <?rfc include="reference.RFC.8273" ?>
 
 <reference anchor="POSIX"
 	   target="http://www.ieee.org">
