@@ -36,7 +36,7 @@
 <!-- end of list of popular I-D processing instructions -->
 
 
-<rfc category="bcp" ipr="trust200902" obsoletes="6434" docName="draft-ietf-6man-rfc6434-bis-03">
+<rfc category="bcp" ipr="trust200902" obsoletes="6434" docName="draft-ietf-6man-rfc6434-bis-05">
 
   <front>
     <title>IPv6 Node Requirements</title>
@@ -386,7 +386,7 @@ to process.
 <t>
 A host MAY limit the number of consecutive PAD1 options in destination
 options or hop-by-hop options to seven. In this case, if the more than
-seven consecutive PAD1 options are present the the packet should be
+seven consecutive PAD1 options are present the packet should be
 silently discarded. The rationale is that if padding of eight or more
 bytes is required than the PADN option should be used.
 </t>
@@ -682,6 +682,8 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<t>The current IPv6 Address Architecture is based on a 64-bit boundary for subnet prefixes.  
         The reasoning behind this decision is documented in <xref target='RFC7421'/>.
 	</t>
+        <t>Implementations MUST also support the Multicast flag updates 
+        documented in <xref target='RFC7371' /> </t>
 
     </section>
 
@@ -693,7 +695,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
 	<t>
 	<xref target='RFC7934'/> recommends that networks provide general-purpose end
    	hosts with multiple global IPv6 addresses when they attach, and it
-   	describes the benefits of and the options for doing so.  Router SHOULD support 
+   	describes the benefits of and the options for doing so.  Routers SHOULD support 
         <xref target='RFC7934'/> for assigning multiple address to a host.  Host SHOULD support 
         assigning multiple addresses as described in <xref target='RFC7934'/>. 
 	</t>
@@ -887,7 +889,7 @@ target="ND" />) depends on multicast and requires that nodes join Solicited
         information.</t>
     
         <t>If an IPv6 node implements DHCP it MUST implement the DNS options <xref target='RFC3646' />
-        as most deployments will expect this options are available.</t>
+        as most deployments will expect these options are available.</t>
 
       </section>
 
@@ -1291,14 +1293,14 @@ Note that
     for IPv6 nodes that are embedded devices, network management may
     be the only possible way of controlling these nodes.</t>
  
-    <t>A node supporting network management SHOULD support NETCONF <xref target='RFC6241' /> 
-    and SNMP configuration <xref target='RFC3411' />.</t>
+    <t>Existing network management protocols include SNMP <xref target='RFC3411'/>, NETCONF 
+    <xref target='RFC6241' /> and RESTCONF <xref target='RFC8040'/>.</t>
 
     <section title="Management Information Base (MIB) Modules">
 
       <t>
-      IPv6 MIBs have been updated since the last release of the document; <xref target='RFC8096' />
-      obseletes several MIBs, which nodes need no longer support.
+      <xref target='RFC8096' /> clarifies the obsoleted status of 
+      various IPv6-specific MIB modules.
       </t>
       <t>The following two MIB modules SHOULD be supported by nodes that
 support a Simple Network Management Protocol (SNMP) agent.</t>
@@ -1316,22 +1318,22 @@ support a Simple Network Management Protocol (SNMP) agent.</t>
         that support an SNMP agent.</t>
 
       </section>
+      <section title="Interface MIB">
+        <t>The Interface MIB <xref target='RFC2863'/> SHOULD be supported by nodes the support 
+        an SNMP agent.</t>
+      </section>
     </section>
 
       <section title="YANG Data Models">
          <t>The following YANG data models SHOULD be supported by nodes that support a 
-         NETCONF agent.</t>
+         NETCONF or RESTCONF agent.</t>
          <section title="IP Management YANG Model">
-             <t> The IP Management YANG Model <xref target='RFC7277' /> SHOULD be supported 
-             by nodes that support NETCONF.</t>
+             <t> The IP Management YANG Model <xref target="I-D.ietf-netmod-rfc7277bis" /> SHOULD be supported 
+             by nodes that support NETCONF or RESTCONF.</t>
          </section>
-         <section title="System Management YANG Model">
-             <t> The System Management YANG Model <xref target='RFC7317' /> SHOULD be supported 
-             by nodes that support NETCONF.</t>
-         </section>
-         <section title="System Management YANG Model">
-             <t> The Interface Management YANG Model <xref target='RFC7223' /> SHOULD be supported 
-             by nodes that support NETCONF.</t>
+         <section title="Interface Management YANG Model">
+             <t> The Interface Management YANG Model <xref target="I-D.ietf-netmod-rfc7223bis" /> SHOULD be supported 
+             by nodes that support NETCONF or RESTCONF.</t>
          </section>
       </section>
 
@@ -1447,6 +1449,7 @@ For this version of the document, the authors
     <t>Updated to MLDv2 support to a MUST since nodes are restricted if MLDv1 is used.</t>
     <t>Require DNS RA Options so SLAAC-only devices can get DNS, RFC8106 is a MUST.</t>
     <t>Require RFC3646 DNS Options for DHCPv6 implementations.</t> 
+    <t>Added RESTCONF and NETCONF as possible options to Network management.</t>
     <t>Added section on constrained devices.</t>
  	<t>Added text on RFC7934, address availability to hosts (SHOULD).</t>
 	<t>Added text on RFC7844, anonymity profiles for DHCPv6 clients.</t>
@@ -1551,6 +1554,7 @@ and made it a
   <?rfc include="reference.RFC.2119" ?>
   <?rfc include="reference.RFC.2710" ?>
   <?rfc include="reference.RFC.2711" ?>
+  <?rfc include="reference.RFC.2863" ?>
   <?rfc include="reference.RFC.3168" ?>
   <?rfc include="reference.RFC.3315" ?>
   <?rfc include="reference.RFC.3411" ?>
@@ -1592,16 +1596,16 @@ and made it a
   <?rfc include="reference.RFC.7048" ?>
   <?rfc include="reference.RFC.7112" ?>
   <?rfc include="reference.RFC.7217" ?>
-  <?rfc include="reference.RFC.7223" ?>
-  <?rfc include="reference.RFC.7277" ?>
+  <?rfc include="reference.I-D.draft-ietf-netmod-rfc7223bis-03.xml" ?>
+  <?rfc include="reference.I-D.draft-ietf-netmod-rfc7277bis-03.xml" ?>
   <?rfc include="reference.RFC.7296" ?>
-  <?rfc include="reference.RFC.7317" ?>
   <?rfc include="reference.RFC.7527" ?>
   <?rfc include="reference.RFC.7559" ?>
   <?rfc include="reference.RFC.7608" ?>
   <?rfc include="reference.RFC.7739" ?>
   <?rfc include="reference.RFC.8021" ?>
   <?rfc include="reference.RFC.8028" ?>
+  <?rfc include="reference.RFC.8040" ?>
   <?rfc include="reference.RFC.8064" ?>
   <?rfc include="reference.RFC.8106" ?>
   <?rfc include="reference.RFC.8200" ?>
@@ -1649,6 +1653,7 @@ and made it a
   <?rfc include="reference.RFC.7084" ?>
   <?rfc include="reference.RFC.7123" ?>
   <?rfc include="reference.RFC.7278" ?>
+  <?rfc include="reference.RFC.7371" ?>
   <?rfc include="reference.RFC.7421" ?>
   <?rfc include="reference.RFC.7721" ?>
   <?rfc include="reference.RFC.7772" ?>

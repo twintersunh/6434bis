@@ -1299,8 +1299,8 @@ Note that
     <section title="Management Information Base (MIB) Modules">
 
       <t>
-      IPv6 MIBs have been updated since the last release of the document; <xref target='RFC8096' />
-      obseletes several MIBs, which nodes need no longer support.
+      <xref target='RFC8096' /> clarifies the obsoleted status of various 
+      IPv6-specific MIB modules.
       </t>
       <t>The following two MIB modules SHOULD be supported by nodes that
 support a Simple Network Management Protocol (SNMP) agent.</t>
@@ -1326,14 +1326,14 @@ support a Simple Network Management Protocol (SNMP) agent.</t>
 
       <section title="YANG Data Models">
          <t>The following YANG data models SHOULD be supported by nodes that support a 
-         NETCONF agent.</t>
+         NETCONF or RESTCONF agent.</t>
          <section title="IP Management YANG Model">
-             <t> The IP Management YANG Model <xref target='RFC7277' /> SHOULD be supported 
-             by nodes that support NETCONF.</t>
+             <t> The IP Management YANG Model <xref target='I-D.draft-ietf-netmod-rfc7277bis' /> SHOULD be supported 
+             by nodes that support NETCONF or RESTCONF.</t>
          </section>
          <section title="Interface Management YANG Model">
              <t> The Interface Management YANG Model <xref target='RFC7223' /> SHOULD be supported 
-             by nodes that support NETCONF.</t>
+             by nodes that support NETCONF or RESTCONF.</t>
          </section>
       </section>
 
@@ -1597,7 +1597,7 @@ and made it a
   <?rfc include="reference.RFC.7112" ?>
   <?rfc include="reference.RFC.7217" ?>
   <?rfc include="reference.RFC.7223" ?>
-  <?rfc include="reference.RFC.7277" ?>
+  <?rfc include="reference.I-D.draft-ietf-netmod-rfc7277bis-03.xml" ?>
   <?rfc include="reference.RFC.7296" ?>
   <?rfc include="reference.RFC.7527" ?>
   <?rfc include="reference.RFC.7559" ?>
